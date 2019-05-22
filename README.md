@@ -41,6 +41,11 @@ The majority of apps fall in one of the three types below. Each type uses a diff
      .then(user => console.log('Logged on as ' + user.displayName))
    ```
 
+   **Ionic/Cordova applications** run the following command:
+   ```javascript
+   ionic cordova plugin add https://github.com/amiltonjr/circuit-sdk
+   ```
+
 2. **Server-side web applications** use the JavaScript SDK (or [REST API](https://circuitsandbox.net/rest/v2/swagger/ui/index.html)) on the client, but handle the authentication flow on the server using the [OAuth 2.0 Authorization Code Grant](https://circuit.github.io/oauth.html#authorization_code). The access token is obtained on the server and then passed to the client to use in the Circuit JavaScript SDK. These apps may also use the Node.js SDK on the server side to act on behalf of the user.<br>
 Example apps: [node-linkify](https://github.com/circuit/node-linkify) or [circuit-google-assistant](https://github.com/circuit/circuit-google-assistant)
    ```javascript
@@ -145,4 +150,4 @@ Circuit.Injectors.itemInjector = function (item) {
 Chrome and Firefox are officially supported.
 
 ### Help us improve the SDK
-Help us improve the SDK or examples by sending us a pull-request or opening a [GitHub Issue](https://github.com/circuit/circuit-sdk/issues/new). 
+Help us improve the SDK or examples by sending us a pull-request or opening a [GitHub Issue](https://github.com/circuit/circuit-sdk/issues/new).
