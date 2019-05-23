@@ -20,7 +20,7 @@ First [register for a free developer account](https://www.circuit.com/web/develo
 
 Then clone the repo and serve the files using a webserver such as http-server:
 ```bash
-git clone https://github.com/circuit/circuit-sdk.git
+git clone https://github.com/amiltonjr/circuit-sdk.git
 cd circuit-sdk
 npm i -g http-server
 http-server -p 7000

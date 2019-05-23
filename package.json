@@ -15,16 +15,16 @@
     "Johannes Ruetschi <johannes.ruetschi@unify.com>"
   ],
   "license": "Apache-2.0",
-  "homepage": "https://github.com/circuit/circuit-sdk",
+  "homepage": "https://github.com/amiltonjr/circuit-sdk",
   "engines": {
     "node": ">= 4.5.0"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/circuit/circuit-sdk"
+    "url": "git://github.com/amiltonjr/circuit-sdk"
   },
   "bugs": {
-    "url": "http://github.com/circuit/circuit-sdk/issues",
+    "url": "http://github.com/amiltonjr/circuit-sdk/issues",
     "mail": ""
   },
   "keywords": [
