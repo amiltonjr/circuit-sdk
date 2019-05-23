@@ -20,32 +20,14 @@
   <issue>https://github.com/amiltonjr/circuit-sdk/issues</issue>
 
   <engines>
-    <engine name="cordova" version=">=3.0.0"/>
-    <engine name="node" version=">=4.5.0"/>
+    <engine name="cordova" version=">=3.0.0" />
   </engines>
 
-  <js-module src="circuit.js" name="circuit">
-    <clobbers target="window.plugins.circuit-sdk" />
-  </js-module>
-
-  <js-module src="circuit-node.js" name="circuit-node">
-    <clobbers target="window.plugins.circuit-sdk" />
-  </js-module>
-
-  <js-module src="circuit.min.js" name="circuit.min">
-    <clobbers target="window.plugins.circuit-sdk" />
-  </js-module>
-
-  <js-module src="FileUpload.js" name="FileUpload">
-    <clobbers target="window.plugins.circuit-sdk" />
-  </js-module>
-
-  <js-module src="WebSocket.js" name="WebSocket">
-    <clobbers target="window.plugins.circuit-sdk" />
-  </js-module>
-
-  <js-module src="XMLHttpRequest.js" name="XMLHttpRequest">
-    <clobbers target="window.plugins.circuit-sdk" />
-  </js-module>
+  <js-module src="circuit.js" name="circuit"><clobbers target="window.plugins.circuit-sdk" /></js-module>
+  <js-module src="circuit-node.js" name="circuit-node"></js-module>
+  <js-module src="circuit.min.js" name="circuit.min"></js-module>
+  <js-module src="FileUpload.js" name="FileUpload"></js-module>
+  <js-module src="WebSocket.js" name="WebSocket"></js-module>
+  <js-module src="XMLHttpRequest.js" name="XMLHttpRequest"></js-module>
 
 </plugin>
