@@ -150,20 +150,16 @@ export namespace Circuit {
     }
 
     export class Client {
-        constructor(config: any, ...args: any[]);
+        constructor(config: any);
 
-        static prototype: {
-            name: string;
-        };
+        addEventListener(e: any, evt: any);
+
+        removeEventListener(e: any, evt: any);
 
     }
 
     export class ClientApiHandler {
         constructor(config: any);
-
-        static prototype: {
-            name: string;
-        };
 
     }
 
@@ -260,10 +256,6 @@ export namespace Circuit {
 
     export class UserToUserHandler {
         constructor(clientApiHandler: any);
-
-        static prototype: {
-            name: string;
-        };
 
     }
 
@@ -3432,17 +3424,9 @@ export namespace Circuit {
 
     export function supportedFeatures(): any;
 
-    export namespace AtcCallInfo {
-        const prototype: {
-        };
+    export namespace AtcCallInfo {}
 
-    }
-
-    export namespace AtcRegistrationSvcImpl {
-        const prototype: {
-        };
-
-    }
+    export namespace AtcRegistrationSvcImpl {}
 
     export namespace AtcRemoteCall {
         namespace parent {
@@ -3570,381 +3554,132 @@ export namespace Circuit {
 
             function updateSecurityStatus(status: any): void;
 
-            namespace addParticipant {
-                const prototype: {
-                };
+            namespace addParticipant {}
 
-            }
+            namespace callHeaderType {}
 
-            namespace callHeaderType {
-                const prototype: {
-                };
+            namespace callTypeCss {}
 
-            }
+            namespace canToggleVideo {}
 
-            namespace callTypeCss {
-                const prototype: {
-                };
+            namespace checkCstaState {}
 
-            }
+            namespace clearAtcHandoverInProgress {}
 
-            namespace canToggleVideo {
-                const prototype: {
-                };
+            namespace clearHoldInProgress {}
 
-            }
+            namespace clearRetrieveInProgress {}
 
-            namespace checkCstaState {
-                const prototype: {
-                };
+            namespace getCstaState {}
 
-            }
+            namespace getParticipant {}
 
-            namespace clearAtcHandoverInProgress {
-                const prototype: {
-                };
+            namespace getPosition {}
 
-            }
+            namespace getRedirectingUser {}
 
-            namespace clearHoldInProgress {
-                const prototype: {
-                };
+            namespace getRedirectionType {}
 
-            }
+            namespace hasLocalScreenShare {}
 
-            namespace clearRetrieveInProgress {
-                const prototype: {
-                };
+            namespace hasLocalVideo {}
 
-            }
+            namespace hasOtherParticipants {}
 
-            namespace getCstaState {
-                const prototype: {
-                };
+            namespace hasParticipant {}
 
-            }
+            namespace hasRemoteMedia {}
 
-            namespace getParticipant {
-                const prototype: {
-                };
+            namespace hasRemoteScreenShare {}
 
-            }
+            namespace hasRemoteVideo {}
 
-            namespace getPosition {
-                const prototype: {
-                };
+            namespace hasVideo {}
 
-            }
+            namespace isAtcConferenceCall {}
 
-            namespace getRedirectingUser {
-                const prototype: {
-                };
+            namespace isCallingOut {}
 
-            }
+            namespace isConferenceCallAllowed {}
 
-            namespace getRedirectionType {
-                const prototype: {
-                };
+            namespace isConsultAllowed {}
 
-            }
+            namespace isEstablished {}
 
-            namespace hasLocalScreenShare {
-                const prototype: {
-                };
+            namespace isForwarded {}
 
-            }
+            namespace isHeld {}
 
-            namespace hasLocalVideo {
-                const prototype: {
-                };
+            namespace isHoldAllowed {}
 
-            }
+            namespace isHoldInProgress {}
 
-            namespace hasOtherParticipants {
-                const prototype: {
-                };
+            namespace isHolding {}
 
-            }
+            namespace isMakeCallAllowed {}
 
-            namespace hasParticipant {
-                const prototype: {
-                };
+            namespace isMuted {}
 
-            }
+            namespace isOutgoingState {}
 
-            namespace hasRemoteMedia {
-                const prototype: {
-                };
+            namespace isPickedUp {}
 
-            }
+            namespace isPickupNotification {}
 
-            namespace hasRemoteScreenShare {
-                const prototype: {
-                };
+            namespace isPresent {}
 
-            }
+            namespace isReconnectAllowed {}
 
-            namespace hasRemoteVideo {
-                const prototype: {
-                };
+            namespace isRetrieveAllowed {}
 
-            }
+            namespace isRetrieveInProgress {}
 
-            namespace hasVideo {
-                const prototype: {
-                };
+            namespace isTransferAllowed {}
 
-            }
+            namespace isTransferCallAllowed {}
 
-            namespace isAtcConferenceCall {
-                const prototype: {
-                };
+            namespace mute {}
 
-            }
+            namespace outgoingFailed {}
 
-            namespace isCallingOut {
-                const prototype: {
-                };
+            namespace removeParticipant {}
 
-            }
+            namespace sameAs {}
 
-            namespace isConferenceCallAllowed {
-                const prototype: {
-                };
+            namespace setAtcHandoverInProgress {}
 
-            }
+            namespace setCstaState {}
 
-            namespace isConsultAllowed {
-                const prototype: {
-                };
+            namespace setDisconnectCause {}
 
-            }
+            namespace setHoldInProgress {}
 
-            namespace isEstablished {
-                const prototype: {
-                };
+            namespace setParticipantState {}
 
-            }
+            namespace setPeerUsersAsParticipants {}
 
-            namespace isForwarded {
-                const prototype: {
-                };
+            namespace setRedirectingUser {}
 
-            }
+            namespace setRedirectionType {}
 
-            namespace isHeld {
-                const prototype: {
-                };
+            namespace setRetrieveInProgress {}
 
-            }
+            namespace terminate {}
 
-            namespace isHoldAllowed {
-                const prototype: {
-                };
+            namespace toString {}
 
-            }
+            namespace toggleMute {}
 
-            namespace isHoldInProgress {
-                const prototype: {
-                };
+            namespace unmute {}
 
-            }
+            namespace updateMediaType {}
 
-            namespace isHolding {
-                const prototype: {
-                };
+            namespace updateParticipant {}
 
-            }
-
-            namespace isMakeCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isMuted {
-                const prototype: {
-                };
-
-            }
-
-            namespace isOutgoingState {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickedUp {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickupNotification {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPresent {
-                const prototype: {
-                };
-
-            }
-
-            namespace isReconnectAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace mute {
-                const prototype: {
-                };
-
-            }
-
-            namespace outgoingFailed {
-                const prototype: {
-                };
-
-            }
-
-            namespace removeParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace sameAs {
-                const prototype: {
-                };
-
-            }
-
-            namespace setAtcHandoverInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setCstaState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setDisconnectCause {
-                const prototype: {
-                };
-
-            }
-
-            namespace setHoldInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setParticipantState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setPeerUsersAsParticipants {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectingUser {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectionType {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace terminate {
-                const prototype: {
-                };
-
-            }
-
-            namespace toString {
-                const prototype: {
-                };
-
-            }
-
-            namespace toggleMute {
-                const prototype: {
-                };
-
-            }
-
-            namespace unmute {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateMediaType {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateSecurityStatus {
-                const prototype: {
-                };
-
-            }
+            namespace updateSecurityStatus {}
 
         }
 
-        namespace prototype {
             function addParticipant(participant: any, pcState: any, update: any): any;
 
             function callHeaderType(): any;
@@ -4069,384 +3804,133 @@ export namespace Circuit {
 
             function updateSecurityStatus(status: any): void;
 
-            namespace addParticipant {
-                const prototype: {
-                };
+            namespace addParticipant {}
 
-            }
+            namespace callHeaderType {}
 
-            namespace callHeaderType {
-                const prototype: {
-                };
+            namespace callTypeCss {}
 
-            }
+            namespace canToggleVideo {}
 
-            namespace callTypeCss {
-                const prototype: {
-                };
+            namespace checkCstaState {}
 
-            }
+            namespace clearAtcHandoverInProgress {}
 
-            namespace canToggleVideo {
-                const prototype: {
-                };
+            namespace clearHoldInProgress {}
 
-            }
+            namespace clearRetrieveInProgress {}
 
-            namespace checkCstaState {
-                const prototype: {
-                };
+            namespace getCstaState {}
 
-            }
+            namespace getParticipant {}
 
-            namespace clearAtcHandoverInProgress {
-                const prototype: {
-                };
+            namespace getPosition {}
 
-            }
+            namespace getRedirectingUser {}
 
-            namespace clearHoldInProgress {
-                const prototype: {
-                };
+            namespace getRedirectionType {}
 
-            }
+            namespace hasLocalScreenShare {}
 
-            namespace clearRetrieveInProgress {
-                const prototype: {
-                };
+            namespace hasLocalVideo {}
 
-            }
+            namespace hasOtherParticipants {}
 
-            namespace getCstaState {
-                const prototype: {
-                };
+            namespace hasParticipant {}
 
-            }
+            namespace hasRemoteMedia {}
 
-            namespace getParticipant {
-                const prototype: {
-                };
+            namespace hasRemoteScreenShare {}
 
-            }
+            namespace hasRemoteVideo {}
 
-            namespace getPosition {
-                const prototype: {
-                };
+            namespace hasVideo {}
 
-            }
+            namespace isAtcConferenceCall {}
 
-            namespace getRedirectingUser {
-                const prototype: {
-                };
+            namespace isCallingOut {}
 
-            }
+            namespace isConferenceCallAllowed {}
 
-            namespace getRedirectionType {
-                const prototype: {
-                };
+            namespace isConsultAllowed {}
 
-            }
+            namespace isEstablished {}
 
-            namespace hasLocalScreenShare {
-                const prototype: {
-                };
+            namespace isForwarded {}
 
-            }
+            namespace isHeld {}
 
-            namespace hasLocalVideo {
-                const prototype: {
-                };
+            namespace isHoldAllowed {}
 
-            }
+            namespace isHoldInProgress {}
 
-            namespace hasOtherParticipants {
-                const prototype: {
-                };
+            namespace isHolding {}
 
-            }
+            namespace isMakeCallAllowed {}
 
-            namespace hasParticipant {
-                const prototype: {
-                };
+            namespace isMuted {}
 
-            }
+            namespace isOutgoingState {}
 
-            namespace hasRemoteMedia {
-                const prototype: {
-                };
+            namespace isPickedUp {}
 
-            }
+            namespace isPickupNotification {}
 
-            namespace hasRemoteScreenShare {
-                const prototype: {
-                };
+            namespace isPresent {}
 
-            }
+            namespace isReconnectAllowed {}
 
-            namespace hasRemoteVideo {
-                const prototype: {
-                };
+            namespace isRetrieveAllowed {}
 
-            }
+            namespace isRetrieveInProgress {}
 
-            namespace hasVideo {
-                const prototype: {
-                };
+            namespace isTransferAllowed {}
 
-            }
+            namespace isTransferCallAllowed {}
 
-            namespace isAtcConferenceCall {
-                const prototype: {
-                };
+            namespace mute {}
 
-            }
+            namespace outgoingFailed {}
 
-            namespace isCallingOut {
-                const prototype: {
-                };
+            namespace removeParticipant {}
 
-            }
+            namespace sameAs {}
 
-            namespace isConferenceCallAllowed {
-                const prototype: {
-                };
+            namespace setAtcHandoverInProgress {}
 
-            }
+            namespace setCstaState {}
 
-            namespace isConsultAllowed {
-                const prototype: {
-                };
+            namespace setDisconnectCause {}
 
-            }
+            namespace setHoldInProgress {}
 
-            namespace isEstablished {
-                const prototype: {
-                };
+            namespace setParticipantState {}
 
-            }
+            namespace setPeerUsersAsParticipants {}
 
-            namespace isForwarded {
-                const prototype: {
-                };
+            namespace setRedirectingUser {}
 
-            }
+            namespace setRedirectionType {}
 
-            namespace isHeld {
-                const prototype: {
-                };
+            namespace setRetrieveInProgress {}
 
-            }
+            namespace terminate {}
 
-            namespace isHoldAllowed {
-                const prototype: {
-                };
+            namespace toString {}
 
-            }
+            namespace toggleMute {}
 
-            namespace isHoldInProgress {
-                const prototype: {
-                };
+            namespace unmute {}
 
-            }
+            namespace updateMediaType {}
 
-            namespace isHolding {
-                const prototype: {
-                };
+            namespace updateParticipant {}
 
-            }
-
-            namespace isMakeCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isMuted {
-                const prototype: {
-                };
-
-            }
-
-            namespace isOutgoingState {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickedUp {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickupNotification {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPresent {
-                const prototype: {
-                };
-
-            }
-
-            namespace isReconnectAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace mute {
-                const prototype: {
-                };
-
-            }
-
-            namespace outgoingFailed {
-                const prototype: {
-                };
-
-            }
-
-            namespace removeParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace sameAs {
-                const prototype: {
-                };
-
-            }
-
-            namespace setAtcHandoverInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setCstaState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setDisconnectCause {
-                const prototype: {
-                };
-
-            }
-
-            namespace setHoldInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setParticipantState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setPeerUsersAsParticipants {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectingUser {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectionType {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace terminate {
-                const prototype: {
-                };
-
-            }
-
-            namespace toString {
-                const prototype: {
-                };
-
-            }
-
-            namespace toggleMute {
-                const prototype: {
-                };
-
-            }
-
-            namespace unmute {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateMediaType {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateSecurityStatus {
-                const prototype: {
-                };
-
-            }
-
-        }
+            namespace updateSecurityStatus {}
 
     }
 
     export namespace BaseCall {
-        namespace prototype {
             function addParticipant(participant: any, pcState: any, update: any): any;
 
             function callHeaderType(): any;
@@ -4571,458 +4055,170 @@ export namespace Circuit {
 
             function updateSecurityStatus(status: any): void;
 
-            namespace addParticipant {
-                const prototype: {
-                };
+            namespace addParticipant {}
 
-            }
+            namespace callHeaderType {}
 
-            namespace callHeaderType {
-                const prototype: {
-                };
+            namespace callTypeCss {}
 
-            }
+            namespace canToggleVideo {}
 
-            namespace callTypeCss {
-                const prototype: {
-                };
+            namespace checkCstaState {}
 
-            }
+            namespace clearAtcHandoverInProgress {}
 
-            namespace canToggleVideo {
-                const prototype: {
-                };
+            namespace clearHoldInProgress {}
 
-            }
+            namespace clearRetrieveInProgress {}
 
-            namespace checkCstaState {
-                const prototype: {
-                };
+            namespace getCstaState {}
 
-            }
+            namespace getParticipant {}
 
-            namespace clearAtcHandoverInProgress {
-                const prototype: {
-                };
+            namespace getPosition {}
 
-            }
+            namespace getRedirectingUser {}
 
-            namespace clearHoldInProgress {
-                const prototype: {
-                };
+            namespace getRedirectionType {}
 
-            }
+            namespace hasLocalScreenShare {}
 
-            namespace clearRetrieveInProgress {
-                const prototype: {
-                };
+            namespace hasLocalVideo {}
 
-            }
+            namespace hasOtherParticipants {}
 
-            namespace getCstaState {
-                const prototype: {
-                };
+            namespace hasParticipant {}
 
-            }
+            namespace hasRemoteMedia {}
 
-            namespace getParticipant {
-                const prototype: {
-                };
+            namespace hasRemoteScreenShare {}
 
-            }
+            namespace hasRemoteVideo {}
 
-            namespace getPosition {
-                const prototype: {
-                };
+            namespace hasVideo {}
 
-            }
+            namespace isAtcConferenceCall {}
 
-            namespace getRedirectingUser {
-                const prototype: {
-                };
+            namespace isCallingOut {}
 
-            }
+            namespace isConferenceCallAllowed {}
 
-            namespace getRedirectionType {
-                const prototype: {
-                };
+            namespace isConsultAllowed {}
 
-            }
+            namespace isEstablished {}
 
-            namespace hasLocalScreenShare {
-                const prototype: {
-                };
+            namespace isForwarded {}
 
-            }
+            namespace isHeld {}
 
-            namespace hasLocalVideo {
-                const prototype: {
-                };
+            namespace isHoldAllowed {}
 
-            }
+            namespace isHoldInProgress {}
 
-            namespace hasOtherParticipants {
-                const prototype: {
-                };
+            namespace isHolding {}
 
-            }
+            namespace isMakeCallAllowed {}
 
-            namespace hasParticipant {
-                const prototype: {
-                };
+            namespace isMuted {}
 
-            }
+            namespace isOutgoingState {}
 
-            namespace hasRemoteMedia {
-                const prototype: {
-                };
+            namespace isPickedUp {}
 
-            }
+            namespace isPickupNotification {}
 
-            namespace hasRemoteScreenShare {
-                const prototype: {
-                };
+            namespace isPresent {}
 
-            }
+            namespace isReconnectAllowed {}
 
-            namespace hasRemoteVideo {
-                const prototype: {
-                };
+            namespace isRetrieveAllowed {}
 
-            }
+            namespace isRetrieveInProgress {}
 
-            namespace hasVideo {
-                const prototype: {
-                };
+            namespace isTransferAllowed {}
 
-            }
+            namespace isTransferCallAllowed {}
 
-            namespace isAtcConferenceCall {
-                const prototype: {
-                };
+            namespace mute {}
 
-            }
+            namespace outgoingFailed {}
 
-            namespace isCallingOut {
-                const prototype: {
-                };
+            namespace removeParticipant {}
 
-            }
+            namespace sameAs {}
 
-            namespace isConferenceCallAllowed {
-                const prototype: {
-                };
+            namespace setAtcHandoverInProgress {}
 
-            }
+            namespace setCstaState {}
 
-            namespace isConsultAllowed {
-                const prototype: {
-                };
+            namespace setDisconnectCause {}
 
-            }
+            namespace setHoldInProgress {}
 
-            namespace isEstablished {
-                const prototype: {
-                };
+            namespace setParticipantState {}
 
-            }
+            namespace setPeerUsersAsParticipants {}
 
-            namespace isForwarded {
-                const prototype: {
-                };
+            namespace setRedirectingUser {}
 
-            }
+            namespace setRedirectionType {}
 
-            namespace isHeld {
-                const prototype: {
-                };
+            namespace setRetrieveInProgress {}
 
-            }
+            namespace terminate {}
 
-            namespace isHoldAllowed {
-                const prototype: {
-                };
+            namespace toString {}
 
-            }
+            namespace toggleMute {}
 
-            namespace isHoldInProgress {
-                const prototype: {
-                };
+            namespace unmute {}
 
-            }
+            namespace updateMediaType {}
 
-            namespace isHolding {
-                const prototype: {
-                };
+            namespace updateParticipant {}
 
-            }
-
-            namespace isMakeCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isMuted {
-                const prototype: {
-                };
-
-            }
-
-            namespace isOutgoingState {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickedUp {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickupNotification {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPresent {
-                const prototype: {
-                };
-
-            }
-
-            namespace isReconnectAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace mute {
-                const prototype: {
-                };
-
-            }
-
-            namespace outgoingFailed {
-                const prototype: {
-                };
-
-            }
-
-            namespace removeParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace sameAs {
-                const prototype: {
-                };
-
-            }
-
-            namespace setAtcHandoverInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setCstaState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setDisconnectCause {
-                const prototype: {
-                };
-
-            }
-
-            namespace setHoldInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setParticipantState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setPeerUsersAsParticipants {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectingUser {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectionType {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace terminate {
-                const prototype: {
-                };
-
-            }
-
-            namespace toString {
-                const prototype: {
-                };
-
-            }
-
-            namespace toggleMute {
-                const prototype: {
-                };
-
-            }
-
-            namespace unmute {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateMediaType {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateSecurityStatus {
-                const prototype: {
-                };
-
-            }
-
-        }
+            namespace updateSecurityStatus {}
 
     }
 
     export namespace BaseEventTarget {
-        namespace prototype {
+
             function createEvent(type: any): any;
 
             function dispatchEvent(type: any): void;
 
-            namespace createEvent {
-                const prototype: {
-                };
+            namespace createEvent {}
 
-            }
-
-            namespace dispatchEvent {
-                const prototype: {
-                };
-
-            }
-
-        }
+            namespace dispatchEvent {}
 
     }
 
-    export namespace CallControlSvcImpl {
-        const prototype: {
-        };
-
-    }
+    export namespace CallControlSvcImpl {}
 
     export namespace CallStatsHandler {
-        const prototype: {
-        };
 
         function overridePromise($q: any): void;
-
-        namespace overridePromise {
-            const prototype: {
-            };
-
-        }
 
     }
 
     export namespace CallStatsHandlerUnified {
-        const prototype: {
-        };
 
         function overridePromise($q: any): void;
-
-        namespace overridePromise {
-            const prototype: {
-            };
-
-        }
 
     }
 
     export namespace CircuitCallControlSvcImpl {
-        const prototype: {
-        };
 
     }
 
     export namespace ClientApiHandlerSingleton {
         function getInstance(): any;
 
-        namespace getInstance {
-            const prototype: {
-            };
-
-        }
+        namespace getInstance {}
 
     }
 
     export namespace ConnectionController {
-        const prototype: {
-        };
 
     }
 
@@ -5032,70 +4228,44 @@ export namespace Circuit {
 
             function dispatchEvent(type: any): void;
 
-            namespace createEvent {
-                const prototype: {
-                };
+            namespace createEvent {}
 
-            }
-
-            namespace dispatchEvent {
-                const prototype: {
-                };
-
-            }
+            namespace dispatchEvent {}
 
         }
 
-        namespace prototype {
+
             const name: string;
 
             function createEvent(type: any): any;
 
             function dispatchEvent(type: any): void;
 
-            namespace createEvent {
-                const prototype: {
-                };
+            namespace createEvent {}
 
-            }
-
-            namespace dispatchEvent {
-                const prototype: {
-                };
-
-            }
-
-        }
+            namespace dispatchEvent {}
 
     }
 
     export namespace CstaParser {
-        const prototype: {
-        };
 
     }
 
     export namespace CstaSvcImpl {
-        const prototype: {
-        };
 
     }
 
     export namespace DeviceDiagnosticSvcImpl {
-        const prototype: {
-        };
 
     }
 
     export namespace Error {
-        namespace prototype {
+
             const message: string;
 
             const name: string;
 
             function toString(): any;
-
-        }
 
     }
 
@@ -5105,68 +4275,41 @@ export namespace Circuit {
 
             function dispatchEvent(type: any): void;
 
-            namespace createEvent {
-                const prototype: {
-                };
+            namespace createEvent {}
 
-            }
-
-            namespace dispatchEvent {
-                const prototype: {
-                };
-
-            }
+            namespace dispatchEvent {}
 
         }
 
-        namespace prototype {
             const name: string;
 
             function createEvent(type: any): any;
 
             function dispatchEvent(type: any): void;
 
-            namespace createEvent {
-                const prototype: {
-                };
+            namespace createEvent {}
 
-            }
-
-            namespace dispatchEvent {
-                const prototype: {
-                };
-
-            }
-
-        }
+            namespace dispatchEvent {}
 
     }
 
     export namespace ExtensionConnHandlerSingleton {
         function getInstance(): any;
 
-        namespace getInstance {
-            const prototype: {
-            };
-
-        }
+        namespace getInstance {}
 
     }
 
     export namespace ExtensionSvcImpl {
-        const prototype: {
-        };
 
     }
 
     export namespace FileUpload {
-        const prototype: {
-        };
 
     }
 
     export namespace IceCandidate {
-        namespace prototype {
+
             function equals(other: any): any;
 
             function getParsedAttribute(): any;
@@ -5183,55 +4326,21 @@ export namespace Circuit {
 
             function toString(): any;
 
-            namespace equals {
-                const prototype: {
-                };
+            namespace equals {}
 
-            }
+            namespace getParsedAttribute {}
 
-            namespace getParsedAttribute {
-                const prototype: {
-                };
+            namespace getRelayClientTransportType {}
 
-            }
+            namespace getValue {}
 
-            namespace getRelayClientTransportType {
-                const prototype: {
-                };
+            namespace isRtcp {}
 
-            }
+            namespace isRtp {}
 
-            namespace getValue {
-                const prototype: {
-                };
+            namespace isTcpTlsRelay {}
 
-            }
-
-            namespace isRtcp {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRtp {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTcpTlsRelay {
-                const prototype: {
-                };
-
-            }
-
-            namespace toString {
-                const prototype: {
-                };
-
-            }
-
-        }
+            namespace toString {}
 
     }
 
@@ -5361,381 +4470,132 @@ export namespace Circuit {
 
             function updateSecurityStatus(status: any): void;
 
-            namespace addParticipant {
-                const prototype: {
-                };
+            namespace addParticipant {}
 
-            }
+            namespace callHeaderType {}
 
-            namespace callHeaderType {
-                const prototype: {
-                };
+            namespace callTypeCss {}
 
-            }
+            namespace canToggleVideo {}
 
-            namespace callTypeCss {
-                const prototype: {
-                };
+            namespace checkCstaState {}
 
-            }
+            namespace clearAtcHandoverInProgress {}
 
-            namespace canToggleVideo {
-                const prototype: {
-                };
+            namespace clearHoldInProgress {}
 
-            }
+            namespace clearRetrieveInProgress {}
 
-            namespace checkCstaState {
-                const prototype: {
-                };
+            namespace getCstaState {}
 
-            }
+            namespace getParticipant {}
 
-            namespace clearAtcHandoverInProgress {
-                const prototype: {
-                };
+            namespace getPosition {}
 
-            }
+            namespace getRedirectingUser {}
 
-            namespace clearHoldInProgress {
-                const prototype: {
-                };
+            namespace getRedirectionType {}
 
-            }
+            namespace hasLocalScreenShare {}
 
-            namespace clearRetrieveInProgress {
-                const prototype: {
-                };
+            namespace hasLocalVideo {}
 
-            }
+            namespace hasOtherParticipants {}
 
-            namespace getCstaState {
-                const prototype: {
-                };
+            namespace hasParticipant {}
 
-            }
+            namespace hasRemoteMedia {}
 
-            namespace getParticipant {
-                const prototype: {
-                };
+            namespace hasRemoteScreenShare {}
 
-            }
+            namespace hasRemoteVideo {}
 
-            namespace getPosition {
-                const prototype: {
-                };
+            namespace hasVideo {}
 
-            }
+            namespace isAtcConferenceCall {}
 
-            namespace getRedirectingUser {
-                const prototype: {
-                };
+            namespace isCallingOut {}
 
-            }
+            namespace isConferenceCallAllowed {}
 
-            namespace getRedirectionType {
-                const prototype: {
-                };
+            namespace isConsultAllowed {}
 
-            }
+            namespace isEstablished {}
 
-            namespace hasLocalScreenShare {
-                const prototype: {
-                };
+            namespace isForwarded {}
 
-            }
+            namespace isHeld {}
 
-            namespace hasLocalVideo {
-                const prototype: {
-                };
+            namespace isHoldAllowed {}
 
-            }
+            namespace isHoldInProgress {}
 
-            namespace hasOtherParticipants {
-                const prototype: {
-                };
+            namespace isHolding {}
 
-            }
+            namespace isMakeCallAllowed {}
 
-            namespace hasParticipant {
-                const prototype: {
-                };
+            namespace isMuted {}
 
-            }
+            namespace isOutgoingState {}
 
-            namespace hasRemoteMedia {
-                const prototype: {
-                };
+            namespace isPickedUp {}
 
-            }
+            namespace isPickupNotification {}
 
-            namespace hasRemoteScreenShare {
-                const prototype: {
-                };
+            namespace isPresent {}
 
-            }
+            namespace isReconnectAllowed {}
 
-            namespace hasRemoteVideo {
-                const prototype: {
-                };
+            namespace isRetrieveAllowed {}
 
-            }
+            namespace isRetrieveInProgress {}
 
-            namespace hasVideo {
-                const prototype: {
-                };
+            namespace isTransferAllowed {}
 
-            }
+            namespace isTransferCallAllowed {}
 
-            namespace isAtcConferenceCall {
-                const prototype: {
-                };
+            namespace mute {}
 
-            }
+            namespace outgoingFailed {}
 
-            namespace isCallingOut {
-                const prototype: {
-                };
+            namespace removeParticipant {}
 
-            }
+            namespace sameAs {}
 
-            namespace isConferenceCallAllowed {
-                const prototype: {
-                };
+            namespace setAtcHandoverInProgress {}
 
-            }
+            namespace setCstaState {}
 
-            namespace isConsultAllowed {
-                const prototype: {
-                };
+            namespace setDisconnectCause {}
 
-            }
+            namespace setHoldInProgress {}
 
-            namespace isEstablished {
-                const prototype: {
-                };
+            namespace setParticipantState {}
 
-            }
+            namespace setPeerUsersAsParticipants {}
 
-            namespace isForwarded {
-                const prototype: {
-                };
+            namespace setRedirectingUser {}
 
-            }
+            namespace setRedirectionType {}
 
-            namespace isHeld {
-                const prototype: {
-                };
+            namespace setRetrieveInProgress {}
 
-            }
+            namespace terminate {}
 
-            namespace isHoldAllowed {
-                const prototype: {
-                };
+            namespace toString {}
 
-            }
+            namespace toggleMute {}
 
-            namespace isHoldInProgress {
-                const prototype: {
-                };
+            namespace unmute {}
 
-            }
+            namespace updateMediaType {}
 
-            namespace isHolding {
-                const prototype: {
-                };
+            namespace updateParticipant {}
 
-            }
-
-            namespace isMakeCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isMuted {
-                const prototype: {
-                };
-
-            }
-
-            namespace isOutgoingState {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickedUp {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickupNotification {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPresent {
-                const prototype: {
-                };
-
-            }
-
-            namespace isReconnectAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace mute {
-                const prototype: {
-                };
-
-            }
-
-            namespace outgoingFailed {
-                const prototype: {
-                };
-
-            }
-
-            namespace removeParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace sameAs {
-                const prototype: {
-                };
-
-            }
-
-            namespace setAtcHandoverInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setCstaState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setDisconnectCause {
-                const prototype: {
-                };
-
-            }
-
-            namespace setHoldInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setParticipantState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setPeerUsersAsParticipants {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectingUser {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectionType {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace terminate {
-                const prototype: {
-                };
-
-            }
-
-            namespace toString {
-                const prototype: {
-                };
-
-            }
-
-            namespace toggleMute {
-                const prototype: {
-                };
-
-            }
-
-            namespace unmute {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateMediaType {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateSecurityStatus {
-                const prototype: {
-                };
-
-            }
+            namespace updateSecurityStatus {}
 
         }
 
-        namespace prototype {
             function addParticipant(participant: any, ...args: any[]): any;
 
             function callHeaderType(): any;
@@ -5868,414 +4728,144 @@ export namespace Circuit {
 
             function updateSecurityStatus(status: any): void;
 
-            namespace addParticipant {
-                const prototype: {
-                };
+            namespace addParticipant {}
 
-            }
+            namespace callHeaderType {}
 
-            namespace callHeaderType {
-                const prototype: {
-                };
+            namespace callTypeCss {}
 
-            }
+            namespace canToggleVideo {}
 
-            namespace callTypeCss {
-                const prototype: {
-                };
+            namespace checkCstaState {}
 
-            }
+            namespace clearAtcHandoverInProgress {}
 
-            namespace canToggleVideo {
-                const prototype: {
-                };
+            namespace clearHoldInProgress {}
 
-            }
+            namespace clearRetrieveInProgress {}
 
-            namespace checkCstaState {
-                const prototype: {
-                };
+            namespace getCstaState {}
 
-            }
+            namespace getParticipant {}
 
-            namespace clearAtcHandoverInProgress {
-                const prototype: {
-                };
+            namespace getPosition {}
 
-            }
+            namespace getRedirectingUser {}
 
-            namespace clearHoldInProgress {
-                const prototype: {
-                };
+            namespace getRedirectionType {}
 
-            }
+            namespace hasLocalScreenShare {}
 
-            namespace clearRetrieveInProgress {
-                const prototype: {
-                };
+            namespace hasLocalVideo {}
 
-            }
+            namespace hasOtherParticipants {}
 
-            namespace getCstaState {
-                const prototype: {
-                };
+            namespace hasParticipant {}
 
-            }
+            namespace hasRemoteMedia {}
 
-            namespace getParticipant {
-                const prototype: {
-                };
+            namespace hasRemoteScreenShare {}
 
-            }
+            namespace hasRemoteVideo {}
 
-            namespace getPosition {
-                const prototype: {
-                };
+            namespace hasVideo {}
 
-            }
+            namespace isAtcConferenceCall {}
 
-            namespace getRedirectingUser {
-                const prototype: {
-                };
+            namespace isCallingOut {}
 
-            }
+            namespace isConferenceCallAllowed {}
 
-            namespace getRedirectionType {
-                const prototype: {
-                };
+            namespace isConsultAllowed {}
 
-            }
+            namespace isEstablished {}
 
-            namespace hasLocalScreenShare {
-                const prototype: {
-                };
+            namespace isForwarded {}
 
-            }
+            namespace isHeld {}
 
-            namespace hasLocalVideo {
-                const prototype: {
-                };
+            namespace isHoldAllowed {}
 
-            }
+            namespace isHoldInProgress {}
 
-            namespace hasOtherParticipants {
-                const prototype: {
-                };
+            namespace isHolding {}
 
-            }
+            namespace isLocalMuteAllowed {}
 
-            namespace hasParticipant {
-                const prototype: {
-                };
+            namespace isMakeCallAllowed {}
 
-            }
+            namespace isMuted {}
 
-            namespace hasRemoteMedia {
-                const prototype: {
-                };
+            namespace isOutgoingState {}
 
-            }
+            namespace isPickedUp {}
 
-            namespace hasRemoteScreenShare {
-                const prototype: {
-                };
+            namespace isPickupNotification {}
 
-            }
+            namespace isPresent {}
 
-            namespace hasRemoteVideo {
-                const prototype: {
-                };
+            namespace isReconnectAllowed {}
 
-            }
+            namespace isRetrieveAllowed {}
 
-            namespace hasVideo {
-                const prototype: {
-                };
+            namespace isRetrieveInProgress {}
 
-            }
+            namespace isTransferAllowed {}
 
-            namespace isAtcConferenceCall {
-                const prototype: {
-                };
+            namespace isTransferCallAllowed {}
 
-            }
+            namespace mute {}
 
-            namespace isCallingOut {
-                const prototype: {
-                };
+            namespace outgoingFailed {}
 
-            }
+            namespace removeParticipant {}
 
-            namespace isConferenceCallAllowed {
-                const prototype: {
-                };
+            namespace sameAs {}
 
-            }
+            namespace setActiveSpeakers {}
 
-            namespace isConsultAllowed {
-                const prototype: {
-                };
+            namespace setAtcHandoverInProgress {}
 
-            }
+            namespace setCstaState {}
 
-            namespace isEstablished {
-                const prototype: {
-                };
+            namespace setDisconnectCause {}
 
-            }
+            namespace setHoldInProgress {}
 
-            namespace isForwarded {
-                const prototype: {
-                };
+            namespace setParticipantRemoteVideoStream {}
 
-            }
+            namespace setParticipantState {}
 
-            namespace isHeld {
-                const prototype: {
-                };
+            namespace setPeerUsersAsParticipants {}
 
-            }
+            namespace setRedirectingUser {}
 
-            namespace isHoldAllowed {
-                const prototype: {
-                };
+            namespace setRedirectionType {}
 
-            }
+            namespace setRetrieveInProgress {}
 
-            namespace isHoldInProgress {
-                const prototype: {
-                };
+            namespace terminate {}
 
-            }
+            namespace toString {}
 
-            namespace isHolding {
-                const prototype: {
-                };
+            namespace toggleMute {}
 
-            }
+            namespace unmute {}
 
-            namespace isLocalMuteAllowed {
-                const prototype: {
-                };
+            namespace updateCallState {}
 
-            }
+            namespace updateMediaType {}
 
-            namespace isMakeCallAllowed {
-                const prototype: {
-                };
+            namespace updateParticipant {}
 
-            }
-
-            namespace isMuted {
-                const prototype: {
-                };
-
-            }
-
-            namespace isOutgoingState {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickedUp {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickupNotification {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPresent {
-                const prototype: {
-                };
-
-            }
-
-            namespace isReconnectAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace mute {
-                const prototype: {
-                };
-
-            }
-
-            namespace outgoingFailed {
-                const prototype: {
-                };
-
-            }
-
-            namespace removeParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace sameAs {
-                const prototype: {
-                };
-
-            }
-
-            namespace setActiveSpeakers {
-                const prototype: {
-                };
-
-            }
-
-            namespace setAtcHandoverInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setCstaState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setDisconnectCause {
-                const prototype: {
-                };
-
-            }
-
-            namespace setHoldInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setParticipantRemoteVideoStream {
-                const prototype: {
-                };
-
-            }
-
-            namespace setParticipantState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setPeerUsersAsParticipants {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectingUser {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectionType {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace terminate {
-                const prototype: {
-                };
-
-            }
-
-            namespace toString {
-                const prototype: {
-                };
-
-            }
-
-            namespace toggleMute {
-                const prototype: {
-                };
-
-            }
-
-            namespace unmute {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateCallState {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateMediaType {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateSecurityStatus {
-                const prototype: {
-                };
-
-            }
-
-        }
+            namespace updateSecurityStatus {}
 
     }
 
     export namespace PhoneNumberFormatter {
         function format(phoneNumber: any): any;
 
-        namespace format {
-            const prototype: {
-            };
-
-        }
+        namespace format {}
 
     }
 
@@ -6286,17 +4876,9 @@ export namespace Circuit {
 
         function retrievePrivateDataFromContent(item: any): void;
 
-        namespace convertPrivateDataToContent {
-            const prototype: {
-            };
+        namespace convertPrivateDataToContent {}
 
-        }
-
-        namespace retrievePrivateDataFromContent {
-            const prototype: {
-            };
-
-        }
+        namespace retrievePrivateDataFromContent {}
 
     }
 
@@ -6313,41 +4895,19 @@ export namespace Circuit {
 
         function normalizeWhiteboard(whiteboard: any): void;
 
-        namespace ParseEvent {
-            const prototype: {
-            };
+        namespace ParseEvent {}
 
-        }
+        namespace Request {}
 
-        namespace Request {
-            const prototype: {
-            };
+        namespace getMediaType {}
 
-        }
+        namespace isOfflineFailure {}
 
-        namespace getMediaType {
-            const prototype: {
-            };
-
-        }
-
-        namespace isOfflineFailure {
-            const prototype: {
-            };
-
-        }
-
-        namespace normalizeWhiteboard {
-            const prototype: {
-            };
-
-        }
+        namespace normalizeWhiteboard {}
 
     }
 
     export namespace PubSubSvcImpl {
-        const prototype: {
-        };
 
     }
 
@@ -6477,381 +5037,132 @@ export namespace Circuit {
 
             function updateSecurityStatus(status: any): void;
 
-            namespace addParticipant {
-                const prototype: {
-                };
+            namespace addParticipant {}
 
-            }
+            namespace callHeaderType {}
 
-            namespace callHeaderType {
-                const prototype: {
-                };
+            namespace callTypeCss {}
 
-            }
+            namespace canToggleVideo {}
 
-            namespace callTypeCss {
-                const prototype: {
-                };
+            namespace checkCstaState {}
 
-            }
+            namespace clearAtcHandoverInProgress {}
 
-            namespace canToggleVideo {
-                const prototype: {
-                };
+            namespace clearHoldInProgress {}
 
-            }
+            namespace clearRetrieveInProgress {}
 
-            namespace checkCstaState {
-                const prototype: {
-                };
+            namespace getCstaState {}
 
-            }
+            namespace getParticipant {}
 
-            namespace clearAtcHandoverInProgress {
-                const prototype: {
-                };
+            namespace getPosition {}
 
-            }
+            namespace getRedirectingUser {}
 
-            namespace clearHoldInProgress {
-                const prototype: {
-                };
+            namespace getRedirectionType {}
 
-            }
+            namespace hasLocalScreenShare {}
 
-            namespace clearRetrieveInProgress {
-                const prototype: {
-                };
+            namespace hasLocalVideo {}
 
-            }
+            namespace hasOtherParticipants {}
 
-            namespace getCstaState {
-                const prototype: {
-                };
+            namespace hasParticipant {}
 
-            }
+            namespace hasRemoteMedia {}
 
-            namespace getParticipant {
-                const prototype: {
-                };
+            namespace hasRemoteScreenShare {}
 
-            }
+            namespace hasRemoteVideo {}
 
-            namespace getPosition {
-                const prototype: {
-                };
+            namespace hasVideo {}
 
-            }
+            namespace isAtcConferenceCall {}
 
-            namespace getRedirectingUser {
-                const prototype: {
-                };
+            namespace isCallingOut {}
 
-            }
+            namespace isConferenceCallAllowed {}
 
-            namespace getRedirectionType {
-                const prototype: {
-                };
+            namespace isConsultAllowed {}
 
-            }
+            namespace isEstablished {}
 
-            namespace hasLocalScreenShare {
-                const prototype: {
-                };
+            namespace isForwarded {}
 
-            }
+            namespace isHeld {}
 
-            namespace hasLocalVideo {
-                const prototype: {
-                };
+            namespace isHoldAllowed {}
 
-            }
+            namespace isHoldInProgress {}
 
-            namespace hasOtherParticipants {
-                const prototype: {
-                };
+            namespace isHolding {}
 
-            }
+            namespace isMakeCallAllowed {}
 
-            namespace hasParticipant {
-                const prototype: {
-                };
+            namespace isMuted {}
 
-            }
+            namespace isOutgoingState {}
 
-            namespace hasRemoteMedia {
-                const prototype: {
-                };
+            namespace isPickedUp {}
 
-            }
+            namespace isPickupNotification {}
 
-            namespace hasRemoteScreenShare {
-                const prototype: {
-                };
+            namespace isPresent {}
 
-            }
+            namespace isReconnectAllowed {}
 
-            namespace hasRemoteVideo {
-                const prototype: {
-                };
+            namespace isRetrieveAllowed {}
 
-            }
+            namespace isRetrieveInProgress {}
 
-            namespace hasVideo {
-                const prototype: {
-                };
+            namespace isTransferAllowed {}
 
-            }
+            namespace isTransferCallAllowed {}
 
-            namespace isAtcConferenceCall {
-                const prototype: {
-                };
+            namespace mute {}
 
-            }
+            namespace outgoingFailed {}
 
-            namespace isCallingOut {
-                const prototype: {
-                };
+            namespace removeParticipant {}
 
-            }
+            namespace sameAs {}
 
-            namespace isConferenceCallAllowed {
-                const prototype: {
-                };
+            namespace setAtcHandoverInProgress {}
 
-            }
+            namespace setCstaState {}
 
-            namespace isConsultAllowed {
-                const prototype: {
-                };
+            namespace setDisconnectCause {}
 
-            }
+            namespace setHoldInProgress {}
 
-            namespace isEstablished {
-                const prototype: {
-                };
+            namespace setParticipantState {}
 
-            }
+            namespace setPeerUsersAsParticipants {}
 
-            namespace isForwarded {
-                const prototype: {
-                };
+            namespace setRedirectingUser {}
 
-            }
+            namespace setRedirectionType {}
 
-            namespace isHeld {
-                const prototype: {
-                };
+            namespace setRetrieveInProgress {}
 
-            }
+            namespace terminate {}
 
-            namespace isHoldAllowed {
-                const prototype: {
-                };
+            namespace toString {}
 
-            }
+            namespace toggleMute {}
 
-            namespace isHoldInProgress {
-                const prototype: {
-                };
+            namespace unmute {}
 
-            }
+            namespace updateMediaType {}
 
-            namespace isHolding {
-                const prototype: {
-                };
+            namespace updateParticipant {}
 
-            }
-
-            namespace isMakeCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isMuted {
-                const prototype: {
-                };
-
-            }
-
-            namespace isOutgoingState {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickedUp {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickupNotification {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPresent {
-                const prototype: {
-                };
-
-            }
-
-            namespace isReconnectAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace mute {
-                const prototype: {
-                };
-
-            }
-
-            namespace outgoingFailed {
-                const prototype: {
-                };
-
-            }
-
-            namespace removeParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace sameAs {
-                const prototype: {
-                };
-
-            }
-
-            namespace setAtcHandoverInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setCstaState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setDisconnectCause {
-                const prototype: {
-                };
-
-            }
-
-            namespace setHoldInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setParticipantState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setPeerUsersAsParticipants {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectingUser {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectionType {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace terminate {
-                const prototype: {
-                };
-
-            }
-
-            namespace toString {
-                const prototype: {
-                };
-
-            }
-
-            namespace toggleMute {
-                const prototype: {
-                };
-
-            }
-
-            namespace unmute {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateMediaType {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateSecurityStatus {
-                const prototype: {
-                };
-
-            }
+            namespace updateSecurityStatus {}
 
         }
 
-        namespace prototype {
             function addParticipant(participant: any, pcState: any, update: any): any;
 
             function callHeaderType(): any;
@@ -6978,385 +5289,131 @@ export namespace Circuit {
 
             function updateSecurityStatus(status: any): void;
 
-            namespace addParticipant {
-                const prototype: {
-                };
+            namespace addParticipant {}
 
-            }
+            namespace callHeaderType {}
 
-            namespace callHeaderType {
-                const prototype: {
-                };
+            namespace callTypeCss {}
 
-            }
+            namespace canToggleVideo {}
 
-            namespace callTypeCss {
-                const prototype: {
-                };
+            namespace checkCstaState {}
 
-            }
+            namespace clearAtcHandoverInProgress {}
 
-            namespace canToggleVideo {
-                const prototype: {
-                };
+            namespace clearHoldInProgress {}
 
-            }
+            namespace clearRetrieveInProgress {}
 
-            namespace checkCstaState {
-                const prototype: {
-                };
+            namespace getCstaState {}
 
-            }
+            namespace getParticipant {}
 
-            namespace clearAtcHandoverInProgress {
-                const prototype: {
-                };
+            namespace getPosition {}
 
-            }
+            namespace getRedirectingUser {}
 
-            namespace clearHoldInProgress {
-                const prototype: {
-                };
+            namespace getRedirectionType {}
 
-            }
+            namespace hasLocalScreenShare {}
 
-            namespace clearRetrieveInProgress {
-                const prototype: {
-                };
+            namespace hasLocalVideo {}
 
-            }
+            namespace hasOtherParticipants {}
 
-            namespace getCstaState {
-                const prototype: {
-                };
+            namespace hasParticipant {}
 
-            }
+            namespace hasRemoteMedia {}
 
-            namespace getParticipant {
-                const prototype: {
-                };
+            namespace hasRemoteScreenShare {}
 
-            }
+            namespace hasRemoteVideo {}
 
-            namespace getPosition {
-                const prototype: {
-                };
+            namespace hasVideo {}
 
-            }
+            namespace isAtcConferenceCall {}
 
-            namespace getRedirectingUser {
-                const prototype: {
-                };
+            namespace isCallingOut {}
 
-            }
+            namespace isConferenceCallAllowed {}
 
-            namespace getRedirectionType {
-                const prototype: {
-                };
+            namespace isConsultAllowed {}
 
-            }
+            namespace isEstablished {}
 
-            namespace hasLocalScreenShare {
-                const prototype: {
-                };
+            namespace isForwarded {}
 
-            }
+            namespace isHeld {}
 
-            namespace hasLocalVideo {
-                const prototype: {
-                };
+            namespace isHoldAllowed {}
 
-            }
+            namespace isHoldInProgress {}
 
-            namespace hasOtherParticipants {
-                const prototype: {
-                };
+            namespace isHolding {}
 
-            }
+            namespace isMakeCallAllowed {}
 
-            namespace hasParticipant {
-                const prototype: {
-                };
+            namespace isMuted {}
 
-            }
+            namespace isOutgoingState {}
 
-            namespace hasRemoteMedia {
-                const prototype: {
-                };
+            namespace isPickedUp {}
 
-            }
+            namespace isPickupNotification {}
 
-            namespace hasRemoteScreenShare {
-                const prototype: {
-                };
+            namespace isPresent {}
 
-            }
+            namespace isReconnectAllowed {}
 
-            namespace hasRemoteVideo {
-                const prototype: {
-                };
+            namespace isRetrieveAllowed {}
 
-            }
+            namespace isRetrieveInProgress {}
 
-            namespace hasVideo {
-                const prototype: {
-                };
+            namespace isTransferAllowed {}
 
-            }
+            namespace isTransferCallAllowed {}
 
-            namespace isAtcConferenceCall {
-                const prototype: {
-                };
+            namespace mute {}
 
-            }
+            namespace outgoingFailed {}
 
-            namespace isCallingOut {
-                const prototype: {
-                };
+            namespace removeParticipant {}
 
-            }
+            namespace sameAs {}
 
-            namespace isConferenceCallAllowed {
-                const prototype: {
-                };
+            namespace setActiveClient {}
 
-            }
+            namespace setAtcHandoverInProgress {}
 
-            namespace isConsultAllowed {
-                const prototype: {
-                };
+            namespace setCstaState {}
 
-            }
+            namespace setDisconnectCause {}
 
-            namespace isEstablished {
-                const prototype: {
-                };
+            namespace setHoldInProgress {}
 
-            }
+            namespace setParticipantState {}
 
-            namespace isForwarded {
-                const prototype: {
-                };
+            namespace setPeerUsersAsParticipants {}
 
-            }
+            namespace setRedirectingUser {}
 
-            namespace isHeld {
-                const prototype: {
-                };
+            namespace setRedirectionType {}
 
-            }
+            namespace setRetrieveInProgress {}
 
-            namespace isHoldAllowed {
-                const prototype: {
-                };
+            namespace terminate {}
 
-            }
+            namespace toString {}
 
-            namespace isHoldInProgress {
-                const prototype: {
-                };
+            namespace toggleMute {}
 
-            }
+            namespace unmute {}
 
-            namespace isHolding {
-                const prototype: {
-                };
+            namespace updateMediaType {}
 
-            }
+            namespace updateParticipant {}
 
-            namespace isMakeCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isMuted {
-                const prototype: {
-                };
-
-            }
-
-            namespace isOutgoingState {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickedUp {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPickupNotification {
-                const prototype: {
-                };
-
-            }
-
-            namespace isPresent {
-                const prototype: {
-                };
-
-            }
-
-            namespace isReconnectAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace isTransferCallAllowed {
-                const prototype: {
-                };
-
-            }
-
-            namespace mute {
-                const prototype: {
-                };
-
-            }
-
-            namespace outgoingFailed {
-                const prototype: {
-                };
-
-            }
-
-            namespace removeParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace sameAs {
-                const prototype: {
-                };
-
-            }
-
-            namespace setActiveClient {
-                const prototype: {
-                };
-
-            }
-
-            namespace setAtcHandoverInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setCstaState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setDisconnectCause {
-                const prototype: {
-                };
-
-            }
-
-            namespace setHoldInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace setParticipantState {
-                const prototype: {
-                };
-
-            }
-
-            namespace setPeerUsersAsParticipants {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectingUser {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRedirectionType {
-                const prototype: {
-                };
-
-            }
-
-            namespace setRetrieveInProgress {
-                const prototype: {
-                };
-
-            }
-
-            namespace terminate {
-                const prototype: {
-                };
-
-            }
-
-            namespace toString {
-                const prototype: {
-                };
-
-            }
-
-            namespace toggleMute {
-                const prototype: {
-                };
-
-            }
-
-            namespace unmute {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateMediaType {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateParticipant {
-                const prototype: {
-                };
-
-            }
-
-            namespace updateSecurityStatus {
-                const prototype: {
-                };
-
-            }
-
-        }
+            namespace updateSecurityStatus {}
 
     }
 
@@ -7371,47 +5428,23 @@ export namespace Circuit {
 
         function setActions(participant: any, conversation: any, localUser: any): void;
 
-        namespace createFromUser {
-            const prototype: {
-            };
+        namespace createFromUser {}
 
-        }
+        namespace hasSameMediaType {}
 
-        namespace hasSameMediaType {
-            const prototype: {
-            };
+        namespace hasVideoStream {}
 
-        }
+        namespace isActive {}
 
-        namespace hasVideoStream {
-            const prototype: {
-            };
-
-        }
-
-        namespace isActive {
-            const prototype: {
-            };
-
-        }
-
-        namespace setActions {
-            const prototype: {
-            };
-
-        }
+        namespace setActions {}
 
     }
 
     export namespace RtcPeerConnections {
-        const prototype: {
-        };
 
     }
 
     export namespace RtcPeerConnectionsUnified {
-        const prototype: {
-        };
 
     }
 
@@ -7453,8 +5486,6 @@ export namespace Circuit {
 
         const playbackDevices: any[];
 
-        const prototype: {
-        };
 
         const recordingDevices: any[];
 
@@ -7543,17 +5574,7 @@ export namespace Circuit {
 
         function processClientSettings(settings: any): void;
 
-        namespace overridePromise {
-            const prototype: {
-            };
-
-        }
-
-        namespace processClientSettings {
-            const prototype: {
-            };
-
-        }
+        namespace processClientSettings {}
 
     }
 
@@ -7574,82 +5595,40 @@ export namespace Circuit {
 
         function unregEvtHandlers(): void;
 
-        namespace getScreen {
-            const prototype: {
-            };
+        namespace getScreen {}
 
-        }
+        namespace injectExtensionSvc {}
 
-        namespace injectExtensionSvc {
-            const prototype: {
-            };
+        namespace injectTemasysSvc {}
 
-        }
+        namespace installExtension {}
 
-        namespace injectTemasysSvc {
-            const prototype: {
-            };
+        namespace isFirefoxLegacy {}
 
-        }
+        namespace isScreensharingAvailable {}
 
-        namespace installExtension {
-            const prototype: {
-            };
+        namespace setControllingScreen {}
 
-        }
-
-        namespace isFirefoxLegacy {
-            const prototype: {
-            };
-
-        }
-
-        namespace isScreensharingAvailable {
-            const prototype: {
-            };
-
-        }
-
-        namespace setControllingScreen {
-            const prototype: {
-            };
-
-        }
-
-        namespace unregEvtHandlers {
-            const prototype: {
-            };
-
-        }
+        namespace unregEvtHandlers {}
 
     }
 
     export namespace SdkHelperSvcImpl {
-        const prototype: {
-        };
 
     }
 
     export namespace SdkServices {
-        const prototype: {
-        };
 
     }
 
     export namespace UserToUserHandlerSingleton {
         function getInstance(): any;
 
-        namespace getInstance {
-            const prototype: {
-            };
-
-        }
+        namespace getInstance {}
 
     }
 
     export namespace UtilSvcImpl {
-        const prototype: {
-        };
 
     }
 
@@ -8138,497 +6117,169 @@ export namespace Circuit {
 
         function validatePreviewProtocol(html: any): any;
 
-        namespace TabSelector {
-            const prototype: {
-            };
+        namespace TabSelector {}
 
-        }
+        namespace appIsFocused {}
 
-        namespace appIsFocused {
-            const prototype: {
-            };
+        namespace binaryInsert {}
 
-        }
+        namespace buildAttachmentMetaData {}
 
-        namespace binaryInsert {
-            const prototype: {
-            };
+        namespace bytesToSize {}
 
-        }
+        namespace checkUserDomain {}
 
-        namespace buildAttachmentMetaData {
-            const prototype: {
-            };
+        namespace cleanPhoneNumber {}
 
-        }
+        namespace cleanPhoneNumberDigitsWithPin {}
 
-        namespace bytesToSize {
-            const prototype: {
-            };
+        namespace compareElements {}
 
-        }
+        namespace compareStrings {}
 
-        namespace checkUserDomain {
-            const prototype: {
-            };
+        namespace convertItemText {}
 
-        }
+        namespace convertSymbolCodes {}
 
-        namespace cleanPhoneNumber {
-            const prototype: {
-            };
+        namespace convertVersionToNumber {}
 
-        }
+        namespace copyToClipboard {}
 
-        namespace cleanPhoneNumberDigitsWithPin {
-            const prototype: {
-            };
+        namespace createMentionedUsersArray {}
 
-        }
+        namespace createTransactionId {}
 
-        namespace compareElements {
-            const prototype: {
-            };
+        namespace delayOrTimestamp {}
 
-        }
+        namespace enhanceEncodeURI {}
 
-        namespace compareStrings {
-            const prototype: {
-            };
+        namespace escapedHtmlToText {}
 
-        }
+        namespace extractConfigurableText {}
 
-        namespace convertItemText {
-            const prototype: {
-            };
+        namespace flattenObj {}
 
-        }
+        namespace formatPIN {}
 
-        namespace convertSymbolCodes {
-            const prototype: {
-            };
+        namespace generateCallId {}
 
-        }
+        namespace getBaseObject {}
 
-        namespace convertVersionToNumber {
-            const prototype: {
-            };
+        namespace getBrowserInfo {}
 
-        }
+        namespace getEmails {}
 
-        namespace copyToClipboard {
-            const prototype: {
-            };
+        namespace getImageFileExtension {}
 
-        }
+        namespace getLegalRegion {}
 
-        namespace createMentionedUsersArray {
-            const prototype: {
-            };
+        namespace getLocalTime {}
 
-        }
+        namespace getMimeTypes {}
 
-        namespace createTransactionId {
-            const prototype: {
-            };
+        namespace getNormalizedFileExtension {}
 
-        }
+        namespace getOSInfo {}
 
-        namespace delayOrTimestamp {
-            const prototype: {
-            };
+        namespace getOrigin {}
 
-        }
+        namespace hasEmptyPrototype {}
 
-        namespace enhanceEncodeURI {
-            const prototype: {
-            };
+        namespace hasScrollbar {}
 
-        }
+        namespace inherit {}
 
-        namespace escapedHtmlToText {
-            const prototype: {
-            };
+        namespace isCircuitLink {}
 
-        }
+        namespace isDescendantOrEqual {}
 
-        namespace extractConfigurableText {
-            const prototype: {
-            };
+        namespace isEmptyObject {}
 
-        }
+        namespace isMSDoc {}
 
-        namespace flattenObj {
-            const prototype: {
-            };
+        namespace isMobile {}
 
-        }
+        namespace isPromise {}
 
-        namespace formatPIN {
-            const prototype: {
-            };
+        namespace isSupportedImage {}
 
-        }
+        namespace isVideoSupportedByBrowser {}
 
-        namespace generateCallId {
-            const prototype: {
-            };
+        namespace isXCodeDoc {}
 
-        }
+        namespace isYourCircuitDomain {}
 
-        namespace getBaseObject {
-            const prototype: {
-            };
+        namespace linkifyContent {}
 
-        }
+        namespace linkifyText {}
 
-        namespace getBrowserInfo {
-            const prototype: {
-            };
+        namespace mapKeypadCodeToDtmf {}
 
-        }
+        namespace matchEmailPattern {}
 
-        namespace getEmails {
-            const prototype: {
-            };
+        namespace matchNames {}
 
-        }
+        namespace matchPhonePattern {}
 
-        namespace getImageFileExtension {
-            const prototype: {
-            };
+        namespace matchUrlPattern {}
 
-        }
+        namespace normalizeDn {}
 
-        namespace getLegalRegion {
-            const prototype: {
-            };
+        namespace normalizeLocale {}
 
-        }
+        namespace normalizeLocaleProto {}
 
-        namespace getLocalTime {
-            const prototype: {
-            };
+        namespace parseIpWithPort {}
 
-        }
+        namespace parseQS {}
 
-        namespace getMimeTypes {
-            const prototype: {
-            };
+        namespace randomBoolean {}
 
-        }
+        namespace randomNumber {}
 
-        namespace getNormalizedFileExtension {
-            const prototype: {
-            };
+        namespace removeArrayElement {}
 
-        }
+        namespace removeMentionHtml {}
 
-        namespace getOSInfo {
-            const prototype: {
-            };
+        namespace retrieveTextOnly {}
 
-        }
+        namespace rstring {}
 
-        namespace getOrigin {
-            const prototype: {
-            };
+        namespace sanitize {}
 
-        }
+        namespace sanitizeSymbols {}
 
-        namespace hasEmptyPrototype {
-            const prototype: {
-            };
+        namespace selectMediaDevice {}
 
-        }
+        namespace shallowCopy {}
 
-        namespace hasScrollbar {
-            const prototype: {
-            };
+        namespace sslProxify {}
 
-        }
+        namespace standardizeEmoticon {}
 
-        namespace inherit {
-            const prototype: {
-            };
+        namespace stripParenthesis {}
 
-        }
+        namespace syncBaseObject {}
 
-        namespace isCircuitLink {
-            const prototype: {
-            };
+        namespace textToHtmlEscaped {}
 
-        }
+        namespace throttle {}
 
-        namespace isDescendantOrEqual {
-            const prototype: {
-            };
+        namespace toPlainText {}
 
-        }
+        namespace toPlainTextWithEmoticonHtml {}
 
-        namespace isEmptyObject {
-            const prototype: {
-            };
+        namespace toQS {}
 
-        }
+        namespace trimCallForMobile {}
 
-        namespace isMSDoc {
-            const prototype: {
-            };
+        namespace trimConvForMobile {}
 
-        }
+        namespace trimTextWithEmoticonsBeforeMatch {}
 
-        namespace isMobile {
-            const prototype: {
-            };
+        namespace truncateFileName {}
 
-        }
-
-        namespace isPromise {
-            const prototype: {
-            };
-
-        }
-
-        namespace isSupportedImage {
-            const prototype: {
-            };
-
-        }
-
-        namespace isVideoSupportedByBrowser {
-            const prototype: {
-            };
-
-        }
-
-        namespace isXCodeDoc {
-            const prototype: {
-            };
-
-        }
-
-        namespace isYourCircuitDomain {
-            const prototype: {
-            };
-
-        }
-
-        namespace linkifyContent {
-            const prototype: {
-            };
-
-        }
-
-        namespace linkifyText {
-            const prototype: {
-            };
-
-        }
-
-        namespace mapKeypadCodeToDtmf {
-            const prototype: {
-            };
-
-        }
-
-        namespace matchEmailPattern {
-            const prototype: {
-            };
-
-        }
-
-        namespace matchNames {
-            const prototype: {
-            };
-
-        }
-
-        namespace matchPhonePattern {
-            const prototype: {
-            };
-
-        }
-
-        namespace matchUrlPattern {
-            const prototype: {
-            };
-
-        }
-
-        namespace normalizeDn {
-            const prototype: {
-            };
-
-        }
-
-        namespace normalizeLocale {
-            const prototype: {
-            };
-
-        }
-
-        namespace normalizeLocaleProto {
-            const prototype: {
-            };
-
-        }
-
-        namespace parseIpWithPort {
-            const prototype: {
-            };
-
-        }
-
-        namespace parseQS {
-            const prototype: {
-            };
-
-        }
-
-        namespace randomBoolean {
-            const prototype: {
-            };
-
-        }
-
-        namespace randomNumber {
-            const prototype: {
-            };
-
-        }
-
-        namespace removeArrayElement {
-            const prototype: {
-            };
-
-        }
-
-        namespace removeMentionHtml {
-            const prototype: {
-            };
-
-        }
-
-        namespace retrieveTextOnly {
-            const prototype: {
-            };
-
-        }
-
-        namespace rstring {
-            const prototype: {
-            };
-
-        }
-
-        namespace sanitize {
-            const prototype: {
-            };
-
-        }
-
-        namespace sanitizeSymbols {
-            const prototype: {
-            };
-
-        }
-
-        namespace selectMediaDevice {
-            const prototype: {
-            };
-
-        }
-
-        namespace shallowCopy {
-            const prototype: {
-            };
-
-        }
-
-        namespace sslProxify {
-            const prototype: {
-            };
-
-        }
-
-        namespace standardizeEmoticon {
-            const prototype: {
-            };
-
-        }
-
-        namespace stripParenthesis {
-            const prototype: {
-            };
-
-        }
-
-        namespace syncBaseObject {
-            const prototype: {
-            };
-
-        }
-
-        namespace textToHtmlEscaped {
-            const prototype: {
-            };
-
-        }
-
-        namespace throttle {
-            const prototype: {
-            };
-
-        }
-
-        namespace toPlainText {
-            const prototype: {
-            };
-
-        }
-
-        namespace toPlainTextWithEmoticonHtml {
-            const prototype: {
-            };
-
-        }
-
-        namespace toQS {
-            const prototype: {
-            };
-
-        }
-
-        namespace trimCallForMobile {
-            const prototype: {
-            };
-
-        }
-
-        namespace trimConvForMobile {
-            const prototype: {
-            };
-
-        }
-
-        namespace trimTextWithEmoticonsBeforeMatch {
-            const prototype: {
-            };
-
-        }
-
-        namespace truncateFileName {
-            const prototype: {
-            };
-
-        }
-
-        namespace validatePreviewProtocol {
-            const prototype: {
-            };
-
-        }
+        namespace validatePreviewProtocol {}
 
     }
 
@@ -8697,161 +6348,57 @@ export namespace Circuit {
 
         function toggleAudio(): any;
 
-        namespace IceCandidate {
-            const prototype: {
-            };
+        namespace IceCandidate {}
 
-        }
+        namespace PeerConnection {}
 
-        namespace PeerConnection {
-            const prototype: {
-            };
+        namespace SessionDescription {}
 
-        }
+        namespace attachSinkIdToAudioElement {}
 
-        namespace SessionDescription {
-            const prototype: {
-            };
+        namespace clearMediaSourcesCache {}
 
-        }
+        namespace closePc {}
 
-        namespace attachSinkIdToAudioElement {
-            const prototype: {
-            };
+        namespace createObjectURL {}
 
-        }
+        namespace getAudioOptions {}
 
-        namespace clearMediaSourcesCache {
-            const prototype: {
-            };
+        namespace getAudioStreamTrackId {}
 
-        }
+        namespace getAudioTrackId {}
 
-        namespace closePc {
-            const prototype: {
-            };
+        namespace getAudioTrackLabel {}
 
-        }
+        namespace getDesktopOptions {}
 
-        namespace createObjectURL {
-            const prototype: {
-            };
+        namespace getMediaSources {}
 
-        }
+        namespace getStreamId {}
 
-        namespace getAudioOptions {
-            const prototype: {
-            };
+        namespace getTrackId {}
 
-        }
+        namespace getUserMedia {}
 
-        namespace getAudioStreamTrackId {
-            const prototype: {
-            };
+        namespace getVideoOptions {}
 
-        }
+        namespace getVideoStreamTrackId {}
 
-        namespace getAudioTrackId {
-            const prototype: {
-            };
+        namespace getVideoTrackId {}
 
-        }
+        namespace getVideoTrackLabel {}
 
-        namespace getAudioTrackLabel {
-            const prototype: {
-            };
+        namespace init {}
 
-        }
+        namespace stopLocalVideoTrack {}
 
-        namespace getDesktopOptions {
-            const prototype: {
-            };
+        namespace stopMediaStream {}
 
-        }
-
-        namespace getMediaSources {
-            const prototype: {
-            };
-
-        }
-
-        namespace getStreamId {
-            const prototype: {
-            };
-
-        }
-
-        namespace getTrackId {
-            const prototype: {
-            };
-
-        }
-
-        namespace getUserMedia {
-            const prototype: {
-            };
-
-        }
-
-        namespace getVideoOptions {
-            const prototype: {
-            };
-
-        }
-
-        namespace getVideoStreamTrackId {
-            const prototype: {
-            };
-
-        }
-
-        namespace getVideoTrackId {
-            const prototype: {
-            };
-
-        }
-
-        namespace getVideoTrackLabel {
-            const prototype: {
-            };
-
-        }
-
-        namespace init {
-            const prototype: {
-            };
-
-        }
-
-        namespace overridePromise {
-            const prototype: {
-            };
-
-        }
-
-        namespace stopLocalVideoTrack {
-            const prototype: {
-            };
-
-        }
-
-        namespace stopMediaStream {
-            const prototype: {
-            };
-
-        }
-
-        namespace toggleAudio {
-            const prototype: {
-            };
-
-        }
+        namespace toggleAudio {}
 
     }
 
     export namespace isCompatible {
-        const prototype: {
-        };
 
     }
 
@@ -8878,71 +6425,27 @@ export namespace Circuit {
 
         function warning(...args: any[]): void;
 
-        namespace debug {
-            const prototype: {
-            };
+        namespace debug {}
 
-        }
+        namespace error {}
 
-        namespace error {
-            const prototype: {
-            };
+        namespace getLevel {}
 
-        }
+        namespace info {}
 
-        namespace getLevel {
-            const prototype: {
-            };
+        namespace logMsg {}
 
-        }
+        namespace msgRcvd {}
 
-        namespace info {
-            const prototype: {
-            };
+        namespace msgSend {}
 
-        }
+        namespace setExtensionVersion {}
 
-        namespace logMsg {
-            const prototype: {
-            };
+        namespace setLevel {}
 
-        }
+        namespace warn {}
 
-        namespace msgRcvd {
-            const prototype: {
-            };
-
-        }
-
-        namespace msgSend {
-            const prototype: {
-            };
-
-        }
-
-        namespace setExtensionVersion {
-            const prototype: {
-            };
-
-        }
-
-        namespace setLevel {
-            const prototype: {
-            };
-
-        }
-
-        namespace warn {
-            const prototype: {
-            };
-
-        }
-
-        namespace warning {
-            const prototype: {
-            };
-
-        }
+        namespace warning {}
 
     }
 
@@ -9011,203 +6514,73 @@ export namespace Circuit {
 
         function verifyFingerprintInMLines(sdp: any): any;
 
-        namespace addEmptyVideoLine {
-            const prototype: {
-            };
+        namespace addEmptyVideoLine {}
 
-        }
+        namespace addEndOfCandidatesLine {}
 
-        namespace addEndOfCandidatesLine {
-            const prototype: {
-            };
+        namespace disableMultiplex {}
 
-        }
+        namespace findMediaLineIndex {}
 
-        namespace disableMultiplex {
-            const prototype: {
-            };
+        namespace fixTrickleIceOption {}
 
-        }
+        namespace getConnectionMode {}
 
-        namespace findMediaLineIndex {
-            const prototype: {
-            };
+        namespace getIceCandidates {}
 
-        }
+        namespace getMediaIds {}
 
-        namespace fixTrickleIceOption {
-            const prototype: {
-            };
+        namespace getOrigin {}
 
-        }
+        namespace getSsrcList {}
 
-        namespace getConnectionMode {
-            const prototype: {
-            };
+        namespace getVideoConnectionModes {}
 
-        }
+        namespace hasVideo {}
 
-        namespace getIceCandidates {
-            const prototype: {
-            };
+        namespace iceTotalCandidatesCount {}
 
-        }
+        namespace isHold {}
 
-        namespace getMediaIds {
-            const prototype: {
-            };
+        namespace isMultiplexEnabled {}
 
-        }
+        namespace isNoOfferSdp {}
 
-        namespace getOrigin {
-            const prototype: {
-            };
+        namespace isTrickleIceOption {}
 
-        }
+        namespace parse {}
 
-        namespace getSsrcList {
-            const prototype: {
-            };
+        namespace removeAudioLevelAttr {}
 
-        }
+        namespace removeAudioMediaProtocols {}
 
-        namespace getVideoConnectionModes {
-            const prototype: {
-            };
+        namespace removeEndOfCandidatesLine {}
 
-        }
+        namespace removeVideo {}
 
-        namespace hasVideo {
-            const prototype: {
-            };
+        namespace removeVideoBandwidth {}
 
-        }
+        namespace setConnectionMode {}
 
-        namespace iceTotalCandidatesCount {
-            const prototype: {
-            };
+        namespace setMediaIdAttribute {}
 
-        }
+        namespace setOpusParameters {}
 
-        namespace isHold {
-            const prototype: {
-            };
+        namespace setPreferredVideoCodec {}
 
-        }
+        namespace setVideoBandwidth {}
 
-        namespace isMultiplexEnabled {
-            const prototype: {
-            };
+        namespace setXGoogle {}
 
-        }
+        namespace stringify {}
 
-        namespace isNoOfferSdp {
-            const prototype: {
-            };
+        namespace validateIceCandidates {}
 
-        }
-
-        namespace isTrickleIceOption {
-            const prototype: {
-            };
-
-        }
-
-        namespace parse {
-            const prototype: {
-            };
-
-        }
-
-        namespace removeAudioLevelAttr {
-            const prototype: {
-            };
-
-        }
-
-        namespace removeAudioMediaProtocols {
-            const prototype: {
-            };
-
-        }
-
-        namespace removeEndOfCandidatesLine {
-            const prototype: {
-            };
-
-        }
-
-        namespace removeVideo {
-            const prototype: {
-            };
-
-        }
-
-        namespace removeVideoBandwidth {
-            const prototype: {
-            };
-
-        }
-
-        namespace setConnectionMode {
-            const prototype: {
-            };
-
-        }
-
-        namespace setMediaIdAttribute {
-            const prototype: {
-            };
-
-        }
-
-        namespace setOpusParameters {
-            const prototype: {
-            };
-
-        }
-
-        namespace setPreferredVideoCodec {
-            const prototype: {
-            };
-
-        }
-
-        namespace setVideoBandwidth {
-            const prototype: {
-            };
-
-        }
-
-        namespace setXGoogle {
-            const prototype: {
-            };
-
-        }
-
-        namespace stringify {
-            const prototype: {
-            };
-
-        }
-
-        namespace validateIceCandidates {
-            const prototype: {
-            };
-
-        }
-
-        namespace verifyFingerprintInMLines {
-            const prototype: {
-            };
-
-        }
+        namespace verifyFingerprintInMLines {}
 
     }
 
     export namespace setLogger {
-        const prototype: {
-        };
 
     }
 
@@ -9218,29 +6591,15 @@ export namespace Circuit {
 
         function setItem(key: any, value: any): any;
 
-        namespace getItem {
-            const prototype: {
-            };
+        namespace getItem {}
 
-        }
+        namespace removeItem {}
 
-        namespace removeItem {
-            const prototype: {
-            };
-
-        }
-
-        namespace setItem {
-            const prototype: {
-            };
-
-        }
+        namespace setItem {}
 
     }
 
     export namespace supportedFeatures {
-        const prototype: {
-        };
 
     }
 
