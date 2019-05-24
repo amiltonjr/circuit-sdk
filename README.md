@@ -1,8 +1,8 @@
 Circuit JavaScript and Node.js SDK
 ==================================
 
-[![GitHub release](https://img.shields.io/github/release/circuit/circuit-sdk.svg)](https://github.com/circuit/circuit-sdk)
-[![Build Status](https://travis-ci.org/circuit/circuit-sdk.svg?branch=master)](https://travis-ci.org/circuit/circuit-sdk)
+[![GitHub release](https://img.shields.io/github/release/circuit/circuit-sdk.svg)](https://github.com/amiltonjr/circuit-sdk)
+[![Build Status](https://travis-ci.org/circuit/circuit-sdk.svg?branch=master)](https://travis-ci.org/amiltonjr/circuit-sdk)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 
