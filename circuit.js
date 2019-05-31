@@ -2005,7 +2005,8 @@ var Circuit = (function (circuit) {
      * Function used to determine if client is mobile
      */
     Utils.isMobile = function () {
-        return (window.navigator.platform === 'iOS' || window.navigator.platform === 'Android');
+        const userAgent = navigator.userAgent.toLowerCase();
+        return (userAgent.indexOf("mobile") > -1 && (userAgent.indexOf("android") > -1 || userAgent.indexOf("iphone") > -1));
     };
 
     /**
