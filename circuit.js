@@ -21412,6 +21412,8 @@ var Circuit = (function (circuit) {
 
         // Upload a single file. Returns a promise.
         function uploadFile(reqId, file, url, onProgress, opts) {
+            logger.error('[FileUpload] uploadFile()');
+            
             var clearPendingReq = function () {
                 if (_pendingUploads[reqId]) {
                     _pendingUploads[reqId].xhr = null;
@@ -21432,15 +21434,17 @@ var Circuit = (function (circuit) {
                     opts.token && req.setRequestHeader('authorization', 'SecToken ' + opts.token);
                 }
 
-                if (typeof onProgress === 'function') {
-                    logger.error('[FileUpload] onProgress is a function! Will call it...');
-                    
-                    req.onprogress = onProgress;
-                } else {
-                    logger.error('[FileUpload] onProgress is not a function!');
-                }
+                req.onprogress = function (evt) {
+                    if (evt.lengthComputable) {
+                        logger.error('[FileUpload] loaded = ' + evt.loaded);
+                        logger.error('[FileUpload] total = ' + evt.total);
+                    } else {
+                        logger.error('[FileUpload] Error: Could not compute upload progress information!');
+                    }
+                };
 
                 req.onload = function () {
+                    logger.error('[FileUpload] onLoad()');
                     clearPendingReq();
                     if (req.status === 200) {
                         resolve(req.response);
@@ -21456,6 +21460,7 @@ var Circuit = (function (circuit) {
                 };
 
                 req.onerror = function () {
+                    logger.error('[FileUpload] onError()');
                     clearPendingReq();
                     reject({
                         filename: fileName,
@@ -21465,6 +21470,7 @@ var Circuit = (function (circuit) {
                 };
 
                 req.onabort = function () {
+                    logger.error('[FileUpload] onAbort()');
                     clearPendingReq();
                     reject({
                         filename: fileName,
@@ -23707,7 +23713,7 @@ var Circuit = (function (circuit) {
 
         this.addTextItem = function (textItem, cb) {
             cb = cb || NOP;
-            logger.debug('[ClientApiHandler]: addTextItem...');
+            logger.error('[ClientApiHandler]: addTextItem...');
 
             // Sanitize content, e.g. convert style attribute to class attribute
             var content = getSanitizedContent(textItem);
@@ -53761,7 +53767,7 @@ var Circuit = (function (circuit) {
             return getDirectConversationByUserId({userId: query, createIfNotExists: createIfNotExists});
         }
 
-        function addTextItem(convId, content, progressFunc) {
+        function addTextItem(convId, content) {
             return new Promise(function (resolve, reject) {
                 function sendItem(item) {
                     item.mentionedUsers = Utils.createMentionedUsersArray(item.content);
@@ -53806,7 +53812,7 @@ var Circuit = (function (circuit) {
                         // Must scope FileUpload with circuit to allow node SDK to inject it's implementation
                         var fileUpload = new circuit.FileUpload(_config);
                         // uploadFiles(files, domain, itemId, onProgress, noThumbnail)
-                        fileUpload.uploadFiles(content.attachments, _self.domain, null, progressFunc).then(function (results) {
+                        fileUpload.uploadFiles(content.attachments, _self.domain).then(function (results) {
                             item.attachmentMetaData = [];
                             results.forEach(function (result) {
                                 item.attachmentMetaData.push(result);
