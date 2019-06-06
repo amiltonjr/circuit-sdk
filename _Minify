@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo Minifying file...
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+eval cd ${DIR}
+
+minify ./circuit.js > ./circuit.min.temp.js
+
+echo Done
