@@ -21434,6 +21434,7 @@ var Circuit = (function (circuit) {
 
                 if (typeof onProgress === 'function') {
                     req.upload.onprogress = function (event) {
+                        console.log('req.upload.onprogress(event) =>', event);
                         if (event.total > 0) {
                             onProgress(event.loaded, event.total, fileName);
                         }
