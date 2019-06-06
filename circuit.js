@@ -21433,10 +21433,10 @@ var Circuit = (function (circuit) {
                 }
 
                 req.upload.onprogress = function (event) {
-                    logger.debug('[FileUpload] req.upload.onprogress(event) => total(' + event.total + ') loaded(' + event.loaded + ') fileName(' + fileName + ')');
+                    logger.error('[FileUpload] req.upload.onprogress(event) => total(' + event.total + ') loaded(' + event.loaded + ') fileName(' + fileName + ')');
 
                     if (typeof onProgress === 'function') {
-                        logger.debug('[FileUpload] onProgress is a function! Will call it...');
+                        logger.error('[FileUpload] onProgress is a function! Will call it...');
 
                         if (event.total > 0) {
                             onProgress(event.loaded, event.total, fileName);
