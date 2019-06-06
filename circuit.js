@@ -21432,14 +21432,17 @@ var Circuit = (function (circuit) {
                     opts.token && req.setRequestHeader('authorization', 'SecToken ' + opts.token);
                 }
 
-                if (typeof onProgress === 'function') {
-                    req.upload.onprogress = function (event) {
-                        console.log('req.upload.onprogress(event) =>', event);
+                req.upload.onprogress = function (event) {
+                    logger.debug('[FileUpload] req.upload.onprogress(event) => total(' + event.total + ') loaded(' + event.loaded + ') fileName(' + fileName + ')');
+
+                    if (typeof onProgress === 'function') {
+                        logger.debug('[FileUpload] onProgress is a function! Will call it...');
+
                         if (event.total > 0) {
                             onProgress(event.loaded, event.total, fileName);
                         }
-                    };
-                }
+                    }
+                };
 
                 req.onload = function () {
                     clearPendingReq();
