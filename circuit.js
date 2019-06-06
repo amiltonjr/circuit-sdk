@@ -53761,7 +53761,7 @@ var Circuit = (function (circuit) {
             return getDirectConversationByUserId({userId: query, createIfNotExists: createIfNotExists});
         }
 
-        function addTextItem(convId, content) {
+        function addTextItem(convId, content, progressFunc) {
             return new Promise(function (resolve, reject) {
                 function sendItem(item) {
                     item.mentionedUsers = Utils.createMentionedUsersArray(item.content);
@@ -53805,8 +53805,8 @@ var Circuit = (function (circuit) {
 
                         // Must scope FileUpload with circuit to allow node SDK to inject it's implementation
                         var fileUpload = new circuit.FileUpload(_config);
-
-                        fileUpload.uploadFiles(content.attachments, _self.domain).then(function (results) {
+                        // uploadFiles(files, domain, itemId, onProgress, noThumbnail)
+                        fileUpload.uploadFiles(content.attachments, _self.domain, null, progressFunc).then(function (results) {
                             item.attachmentMetaData = [];
                             results.forEach(function (result) {
                                 item.attachmentMetaData.push(result);
@@ -53852,7 +53852,7 @@ var Circuit = (function (circuit) {
 
                         // Must scope FileUpload with circuit to allow node SDK to inject it's implementation
                         var fileUpload = new circuit.FileUpload(_config);
-
+                        // uploadFiles(files, domain, itemId, onProgress, noThumbnail)
                         fileUpload.uploadFiles(item.attachments, _self.domain).then(function (results) {
                             item.attachmentMetaData = [];
                             results.forEach(function (result) {
@@ -54316,6 +54316,7 @@ var Circuit = (function (circuit) {
                 }
 
                 var fileUpload = new circuit.FileUpload(_config);
+                // uploadFiles(files, domain, itemId, onProgress, noThumbnail)
                 fileUpload.uploadFiles([file], _self.domain).then(function (results) {
                     if (results && results.length) {
                         var settings = [{
