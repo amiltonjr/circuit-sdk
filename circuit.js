@@ -21412,7 +21412,7 @@ var Circuit = (function (circuit) {
 
         // Upload a single file. Returns a promise.
         function uploadFile(reqId, file, url, onProgress, opts) {
-            logger.error('[FileUpload] uploadFile()');
+            console.log('[FileUpload] uploadFile()');
             
             var clearPendingReq = function () {
                 if (_pendingUploads[reqId]) {
@@ -21434,17 +21434,21 @@ var Circuit = (function (circuit) {
                     opts.token && req.setRequestHeader('authorization', 'SecToken ' + opts.token);
                 }
 
-                req.onprogress = function (evt) {
-                    if (evt.lengthComputable) {
-                        logger.error('[FileUpload] loaded = ' + evt.loaded);
-                        logger.error('[FileUpload] total = ' + evt.total);
-                    } else {
-                        logger.error('[FileUpload] Error: Could not compute upload progress information!');
+                req.upload.onprogress = function (evt) {
+                    var loaded = evt.position || evt.loaded;
+                    var total = evt.totalSize || evt.total;
+                    
+                    console.log('[FileUpload] fileName =', fileName);
+                    console.log('[FileUpload] loaded =', loaded);
+                    console.log('[FileUpload] total =', total);
+
+                    if (typeof onProgress === 'function') {
+                        onProgress(loaded, total, fileName);
                     }
                 };
 
                 req.onload = function () {
-                    logger.error('[FileUpload] onLoad()');
+                    console.log('[FileUpload] onLoad()');
                     clearPendingReq();
                     if (req.status === 200) {
                         resolve(req.response);
@@ -21460,7 +21464,7 @@ var Circuit = (function (circuit) {
                 };
 
                 req.onerror = function () {
-                    logger.error('[FileUpload] onError()');
+                    console.log('[FileUpload] onError()');
                     clearPendingReq();
                     reject({
                         filename: fileName,
@@ -21470,7 +21474,7 @@ var Circuit = (function (circuit) {
                 };
 
                 req.onabort = function () {
-                    logger.error('[FileUpload] onAbort()');
+                    console.log('[FileUpload] onAbort()');
                     clearPendingReq();
                     reject({
                         filename: fileName,
