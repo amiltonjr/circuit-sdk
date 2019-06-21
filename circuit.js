@@ -44038,6 +44038,16 @@ var Circuit = (function (circuit) {
                 return;
             }
 
+            if (hdVideo) {
+                if (_videoDeviceId != null && getMaxVideoResolution(_videoDeviceId) == 'FHD') {
+                    videoResolution = VideoResolutionLevel.VIDEO_1080;
+                } else {
+                    videoResolution = VideoResolutionLevel.VIDEO_720;
+                }
+            } else {
+                videoResolution = VideoResolutionLevel.VIDEO_480;
+            }
+
             hdVideo = !!hdVideo;
             LogSvc.debug('[CircuitCallControlSvc]: changeHDVideo - hdVideo = ', hdVideo);
 
@@ -44047,9 +44057,9 @@ var Circuit = (function (circuit) {
                 return;
             }
 
-            if (!isValidVideoResolution(videoResolution)) {
+            /*if (!isValidVideoResolution(videoResolution)) {
                 videoResolution = null;
-            }
+            }*/
 
             var mediaType = Object.assign({}, localCall.localMediaType);
             mediaType.hdVideo = hdVideo;
@@ -52452,6 +52462,9 @@ var Circuit = (function (circuit) {
         // Instantiate the services associated with this client
         var _services = new circuit.SdkServices(_clientApiHandler, _userToUserHandler);
 
+        // Video device ID
+        var _videoDeviceId = null;
+
 
         /*********************************************************************************************/
         // Helper functions
@@ -55344,6 +55357,8 @@ var Circuit = (function (circuit) {
         }
 
         function getMaxVideoResolution(deviceId) {
+            _videoDeviceId = deviceId;
+
             if (!deviceId) {
                 return Promise.reject(new Circuit.Error(Constants.ReturnCode.MISSING_REQUIRED_PARAMETER, 'deviceId is required'));
             }
