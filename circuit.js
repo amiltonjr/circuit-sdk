@@ -44038,14 +44038,16 @@ var Circuit = (function (circuit) {
                 return;
             }
 
-            if (hdVideo) {
-                if (_videoDeviceId != null && getMaxVideoResolution(_videoDeviceId) == 'FHD') {
-                    videoResolution = VideoResolutionLevel.VIDEO_1080;
+            if (!isValidVideoResolution(videoResolution)) {
+                if (hdVideo) {
+                    if (_videoDeviceId != null && getMaxVideoResolution(_videoDeviceId) == 'FHD') {
+                        videoResolution = VideoResolutionLevel.VIDEO_1080;
+                    } else {
+                        videoResolution = VideoResolutionLevel.VIDEO_720;
+                    }
                 } else {
-                    videoResolution = VideoResolutionLevel.VIDEO_720;
+                    videoResolution = VideoResolutionLevel.VIDEO_480;
                 }
-            } else {
-                videoResolution = VideoResolutionLevel.VIDEO_480;
             }
 
             hdVideo = !!hdVideo;
@@ -44056,10 +44058,6 @@ var Circuit = (function (circuit) {
                 cb();
                 return;
             }
-
-            /*if (!isValidVideoResolution(videoResolution)) {
-                videoResolution = null;
-            }*/
 
             var mediaType = Object.assign({}, localCall.localMediaType);
             mediaType.hdVideo = hdVideo;
