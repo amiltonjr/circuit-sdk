@@ -44038,6 +44038,12 @@ var Circuit = (function (circuit) {
                 return;
             }
 
+            console.log('>>>>> getMaxVideoResolution(videoDeviceId) =', getMaxVideoResolution(videoDeviceId));
+
+            /*VGA: VideoResolutionLevel.VIDEO_480,
+                HD: VideoResolutionLevel.VIDEO_720,
+                    FHD: VideoResolutionLevel.VIDEO_1080*/
+
             hdVideo = !!hdVideo;
             LogSvc.debug('[CircuitCallControlSvc]: changeHDVideo - hdVideo = ', hdVideo);
 
@@ -52300,6 +52306,7 @@ var Circuit = (function (circuit) {
     var Targets = circuit.Enums.Targets;
     var VideoResolutionLevel = circuit.Enums.VideoResolutionLevel;
     var Utils = circuit.Utils;
+    var videoDeviceId = 0;
 
     var COMPRESSED_IMG_PREFIX = 'tHuMbNaIl___';
 
@@ -55344,6 +55351,8 @@ var Circuit = (function (circuit) {
         }
 
         function getMaxVideoResolution(deviceId) {
+            videoDeviceId = deviceId;
+
             if (!deviceId) {
                 return Promise.reject(new Circuit.Error(Constants.ReturnCode.MISSING_REQUIRED_PARAMETER, 'deviceId is required'));
             }
@@ -55351,8 +55360,7 @@ var Circuit = (function (circuit) {
                 .catch(retryIfNotSupported(deviceId, Circuit.Enums.VideoResolution.HD))
                 .catch(retryIfNotSupported(deviceId, Circuit.Enums.VideoResolution.VGA))
                 .catch(function () {
-                    // return Promise.reject('No video supported for deviceId: ' + deviceId);
-                    return Promise.resolve(Circuit.Enums.VideoResolution.VGA);
+                    return Promise.reject('No video supported for deviceId: ' + deviceId);
                 });
         }
 
