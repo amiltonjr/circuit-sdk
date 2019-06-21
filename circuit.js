@@ -21413,7 +21413,7 @@ var Circuit = (function (circuit) {
         // Upload a single file. Returns a promise.
         function uploadFile(reqId, file, url, onProgress, opts) {
             console.log('[FileUpload] uploadFile()');
-            
+
             var clearPendingReq = function () {
                 if (_pendingUploads[reqId]) {
                     _pendingUploads[reqId].xhr = null;
@@ -21437,7 +21437,7 @@ var Circuit = (function (circuit) {
                 req.upload.onprogress = function (evt) {
                     var loaded = evt.position || evt.loaded;
                     var total = evt.totalSize || evt.total;
-                    
+
                     console.log('[FileUpload] fileName =', fileName);
                     console.log('[FileUpload] loaded =', loaded);
                     console.log('[FileUpload] total =', total);
@@ -55315,7 +55315,7 @@ var Circuit = (function (circuit) {
         function supportsVideoResolution(deviceId, resolution) {
             return new Promise(function (resolve, reject) {
                 var resolutions = {
-                    VGA: '',
+                    VGA: VideoResolutionLevel.VIDEO_480,
                     HD: VideoResolutionLevel.VIDEO_720,
                     FHD: VideoResolutionLevel.VIDEO_1080
                 };
@@ -55351,7 +55351,8 @@ var Circuit = (function (circuit) {
                 .catch(retryIfNotSupported(deviceId, Circuit.Enums.VideoResolution.HD))
                 .catch(retryIfNotSupported(deviceId, Circuit.Enums.VideoResolution.VGA))
                 .catch(function () {
-                    return Promise.reject('No video supported for deviceId: ' + deviceId);
+                    // return Promise.reject('No video supported for deviceId: ' + deviceId);
+                    return Promise.resolve(Circuit.Enums.VideoResolution.VGA);
                 });
         }
 
