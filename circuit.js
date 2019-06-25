@@ -23717,7 +23717,7 @@ var Circuit = (function (circuit) {
 
         this.addTextItem = function (textItem, cb) {
             cb = cb || NOP;
-            logger.error('[ClientApiHandler]: addTextItem...');
+            logger.info('[ClientApiHandler]: addTextItem...');
 
             // Sanitize content, e.g. convert style attribute to class attribute
             var content = getSanitizedContent(textItem);
