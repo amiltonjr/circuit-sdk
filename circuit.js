@@ -21435,6 +21435,7 @@ var Circuit = (function (circuit) {
                 }
 
                 req.upload.onprogress = function (evt) {
+                    /*
                     var loaded = evt.position || evt.loaded;
                     var total = evt.totalSize || evt.total;
 
@@ -21444,6 +21445,11 @@ var Circuit = (function (circuit) {
 
                     if (typeof onProgress === 'function') {
                         onProgress(loaded, total, fileName);
+                    }
+                    */
+
+                    if (typeof _fileUploadCallback === 'function') {
+                        _fileUploadCallback(evt);
                     }
                 };
 
@@ -52463,6 +52469,9 @@ var Circuit = (function (circuit) {
         // Video device ID
         var _videoDeviceId = null;
 
+        // File upload progress callback
+        var _fileUploadCallback = null;
+
 
         /*********************************************************************************************/
         // Helper functions
@@ -53780,6 +53789,16 @@ var Circuit = (function (circuit) {
                 }).then(getDirectConversationByUserId);
             }
             return getDirectConversationByUserId({userId: query, createIfNotExists: createIfNotExists});
+        }
+
+        function setFileUploadCallback(cb) {
+            if (typeof cb === 'function') {
+                _fileUploadCallback = cb;
+
+                console.log('setFileUploadCallback(): callback function set!');
+            } else {
+                console.error('setFileUploadCallback() Error: not a function!');
+            }
         }
 
         function addTextItem(convId, content) {
@@ -57425,6 +57444,11 @@ var Circuit = (function (circuit) {
          *       .then(res => console.log(`Returned all ${res.items.length} items of this thread`));
          */
         _self.getItemsByThread = getItemsByThread;
+
+        /*
+        * Sets the callback function to be called when a file upload is in progress
+        */
+        _self.setFileUploadCallback = setFileUploadCallback;
 
         /**
          * Send a new text message with optional attachments and URL previews. This API accepts a single string
