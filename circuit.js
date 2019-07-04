@@ -21440,15 +21440,17 @@ var Circuit = (function (circuit) {
                 }
 
                 req.upload.onprogress = function (evt) {
-                    var loaded = evt.position || evt.loaded;
-                    var total = evt.totalSize || evt.total;
-
-                    /*console.log('[FileUpload] fileName =', fileName);
-                    console.log('[FileUpload] loaded =', loaded);
-                    console.log('[FileUpload] total =', total);*/
-
                     if (typeof onProgress === 'function') {
+                        var loaded = evt.position || evt.loaded;
+                        var total = evt.totalSize || evt.total;
+
+                        // Send out the data to callback function
                         onProgress(loaded, total, fileName);
+
+                        // File completely uploaded, unset the callback
+                        if (loaded == total) {
+                            _fileUploadCallback = null;
+                        }
                     }
                 };
 
