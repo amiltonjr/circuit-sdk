@@ -47,6 +47,9 @@ var WebSocket = global.WebSocket;
 var XMLHttpRequest = global.XMLHttpRequest;
 var Promise = global.Promise;
 
+// File upload progress global callback holder
+var _fileUploadCallback = null;
+
 var Circuit = (function (circuit) {
     'use strict';
 
@@ -21420,6 +21423,8 @@ var Circuit = (function (circuit) {
                 }
             };
 
+            onProgress = onProgress || _fileUploadCallback;
+
             return new UploadPromise(function (resolve, reject) {
                 var fileName = file.modifiedName || file.name;
 
@@ -21435,21 +21440,15 @@ var Circuit = (function (circuit) {
                 }
 
                 req.upload.onprogress = function (evt) {
-                    /*
                     var loaded = evt.position || evt.loaded;
                     var total = evt.totalSize || evt.total;
 
-                    console.log('[FileUpload] fileName =', fileName);
+                    /*console.log('[FileUpload] fileName =', fileName);
                     console.log('[FileUpload] loaded =', loaded);
-                    console.log('[FileUpload] total =', total);
+                    console.log('[FileUpload] total =', total);*/
 
                     if (typeof onProgress === 'function') {
                         onProgress(loaded, total, fileName);
-                    }
-                    */
-
-                    if (typeof _fileUploadCallback === 'function') {
-                        _fileUploadCallback(evt);
                     }
                 };
 
@@ -21515,6 +21514,8 @@ var Circuit = (function (circuit) {
             var urlPrefix = domain ? 'https://' + domain : '';
             var result = [];
             var reqId = _nextReqId;
+
+            onProgress = onProgress || _fileUploadCallback;
 
             _nextReqId++;
             _pendingUploads[reqId] = {
@@ -52468,9 +52469,6 @@ var Circuit = (function (circuit) {
 
         // Video device ID
         var _videoDeviceId = null;
-
-        // File upload progress callback
-        var _fileUploadCallback = null;
 
 
         /*********************************************************************************************/
