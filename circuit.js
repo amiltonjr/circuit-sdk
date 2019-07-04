@@ -49,6 +49,7 @@ var Promise = global.Promise;
 
 // File upload progress global callback holder
 var _fileUploadCallback = null;
+var _fileUploadCallbackInstance = null;
 
 var Circuit = (function (circuit) {
     'use strict';
@@ -21445,11 +21446,12 @@ var Circuit = (function (circuit) {
                         var total = evt.totalSize || evt.total;
 
                         // Send out the data to callback function
-                        onProgress(loaded, total, fileName);
+                        onProgress(loaded, total, fileName, _fileUploadCallbackInstance);
 
                         // File completely uploaded, unset the callback
                         if (loaded == total) {
                             _fileUploadCallback = null;
+                            _fileUploadCallbackInstance = null;
                         }
                     }
                 };
@@ -53791,13 +53793,17 @@ var Circuit = (function (circuit) {
             return getDirectConversationByUserId({userId: query, createIfNotExists: createIfNotExists});
         }
 
-        function setFileUploadCallback(cb) {
+        function setFileUploadCallback(cb, instance) {
             if (typeof cb === 'function') {
                 _fileUploadCallback = cb;
 
                 console.log('setFileUploadCallback(): callback function set!');
-            } else {
-                console.error('setFileUploadCallback() Error: not a function!');
+
+                if (instance != null) {
+                    _fileUploadCallbackInstance = instance;
+
+                    console.log('setFileUploadCallback(): callback instance set!');
+                }
             }
         }
 
