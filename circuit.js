@@ -39399,7 +39399,7 @@ var Circuit = (function (circuit) {
 
         function isValidVideoResolution(resolution) {
             if (!HD_VIDEO_RESOLUTIONS.includes(resolution)) {
-                LogSvc.error('[CircuitCallControlSvc]: Invalid video resolution: ', resolution);
+                LogSvc.error('[CircuitCallControlSvc]: Invalid video resolution:', resolution);
                 return false;
             }
             return true;
@@ -44113,8 +44113,18 @@ var Circuit = (function (circuit) {
             LogSvc.debug('[CircuitCallControlSvc]: changeVideoResolution - newResolution = ', newResolution);
 
             if (!isValidVideoResolution(newResolution)) {
-                cb('Invalid resolution');
-                return;
+                //cb('Invalid resolution');
+                //return;
+
+                if (localCall.localMediaType.hdVideo) {
+                    if (_videoDeviceId != null && getMaxVideoResolution(_videoDeviceId) == 'FHD') {
+                        newResolution = VideoResolutionLevel.VIDEO_1080;
+                    } else {
+                        newResolution = VideoResolutionLevel.VIDEO_720;
+                    }
+                } else {
+                    newResolution = VideoResolutionLevel.VIDEO_480;
+                }
             }
 
             if (localCall.localMediaType.videoResolution === newResolution) {
