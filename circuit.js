@@ -22082,6 +22082,8 @@ var Circuit = (function (circuit) {
 
         // Upload a single file. Returns a promise.
         function uploadFile(reqId, file, url, onProgress, opts) {
+            console.log('[FileUpload] uploadFile()');
+            
             var clearPendingReq = function () {
                 if (_pendingUploads[reqId]) {
                     _pendingUploads[reqId].xhr = null;
