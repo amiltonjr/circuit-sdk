@@ -22088,6 +22088,8 @@ var Circuit = (function (circuit) {
                 }
             };
 
+            onProgress = onProgress || _fileUploadCallback;
+
             return new UploadPromise(function (resolve, reject) {
                 var fileName = file.modifiedName || file.name;
 
@@ -22102,15 +22104,25 @@ var Circuit = (function (circuit) {
                     opts.token && req.setRequestHeader('authorization', 'SecToken ' + opts.token);
                 }
 
-                if (typeof onProgress === 'function') {
-                    req.upload.onprogress = function (event) {
-                        if (event.total > 0) {
-                            onProgress(event.loaded, event.total, fileName);
+                req.upload.onprogress = function (evt) {
+                    if (typeof onProgress === 'function') {
+                        var loaded = evt.position || evt.loaded;
+                        var total = evt.totalSize || evt.total;
+
+                        // Send out the data to callback function
+                        onProgress(loaded, total, fileName, _fileUploadCallbackInstance);
+
+                        // File completely uploaded, unset the callback
+                        if (loaded == total) {
+                            _fileUploadCallback = null;
+                            _fileUploadCallbackInstance = null;
                         }
                     };
                 }
 
                 req.onload = function () {
+                    console.log('[FileUpload] onLoad()');
+                    
                     clearPendingReq();
                     if (req.status === 200) {
                         resolve(req.response);
@@ -22126,6 +22138,8 @@ var Circuit = (function (circuit) {
                 };
 
                 req.onerror = function () {
+                    console.log('[FileUpload] onError()');
+                    
                     clearPendingReq();
                     reject({
                         filename: fileName,
@@ -22135,6 +22149,8 @@ var Circuit = (function (circuit) {
                 };
 
                 req.onabort = function () {
+                    console.log('[FileUpload] onAbort()');
+                    
                     clearPendingReq();
                     reject({
                         filename: fileName,
@@ -22155,6 +22171,8 @@ var Circuit = (function (circuit) {
 
             var url = (_domain ? 'https://' + _domain : '') + '/fileapi';
             var reqId = _nextReqId;
+
+            onProgress = onProgress || _fileUploadCallback;
 
             _nextReqId++;
             _pendingUploads[reqId] = {
@@ -46764,6 +46782,18 @@ var Circuit = (function (circuit) {
                 return;
             }
 
+            if (!isValidVideoResolution(videoResolution)) {
+                if (hdVideo) {
+                    if (_videoDeviceId != null && getMaxVideoResolution(_videoDeviceId) == 'FHD') {
+                        videoResolution = VideoResolutionLevel.VIDEO_1080;
+                    } else {
+                        videoResolution = VideoResolutionLevel.VIDEO_720;
+                    }
+                } else {
+                    videoResolution = VideoResolutionLevel.VIDEO_480;
+                }
+            }
+
             hdVideo = !!hdVideo;
             LogSvc.debug('[CircuitCallControlSvc]: changeHDVideo - hdVideo = ', hdVideo);
 
@@ -46771,10 +46801,6 @@ var Circuit = (function (circuit) {
                 LogSvc.debug('[CircuitCallControlSvc]: changeHDVideo - No changes');
                 cb();
                 return;
-            }
-
-            if (!isValidVideoResolution(videoResolution)) {
-                videoResolution = null;
             }
 
             var mediaType = Object.assign({}, localCall.localMediaType);
