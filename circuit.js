@@ -2023,7 +2023,7 @@ var Circuit = (function (circuit) {
      * Function used to determine if client is mobile
      */
     Utils.isMobile = function () {
-        const userAgent = navigator.userAgent.toLowerCase();
+        var userAgent = navigator.userAgent.toLowerCase();
         return (userAgent.indexOf("mobile") > -1 && (userAgent.indexOf("android") > -1 || userAgent.indexOf("iphone") > -1));
     };
 
@@ -2031,7 +2031,8 @@ var Circuit = (function (circuit) {
      * Function used to determine if client is iOS
      */
     Utils.isIOS = function () {
-        return (window.navigator.platform === 'iOS');
+        var userAgent = navigator.userAgent.toLowerCase();
+        return (userAgent.indexOf("iphone") > -1 || userAgent.indexOf("ipad") > -1);
     };
 
     /**
