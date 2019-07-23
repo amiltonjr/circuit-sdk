@@ -60715,6 +60715,11 @@ var Circuit = (function (circuit) {
          */
         _self.getItemsByThread = getItemsByThread;
 
+        /*
+        * Sets the callback function to be called when a file upload is in progress
+        */
+       _self.setFileUploadCallback = setFileUploadCallback;
+
         /**
          * Send a new text message with optional attachments and URL previews. This API accepts a single string
          * with the text message, or an object literal with the text item attributes.<br>
