@@ -8268,13 +8268,17 @@ var Circuit = (function (circuit) {
                 return;
             }
             clearThrottlingData();
+
+            var userAgent = navigator.userAgent.toLowerCase();
+            var isMobile = (userAgent.indexOf("mobile") > -1 && (userAgent.indexOf("android") > -1 || userAgent.indexOf("iphone") > -1));
+
             if (_state !== ConnectionState.Reconnecting &&
                 _state !== ConnectionState.Connected) {
                 logger.error('[CONN]: WebSocket Connection Error');
                 setState(ConnectionState.Disconnected);
                 clearSocket();
                 onError('Failed to open WebSocket connection');
-            } else if (window.navigator.platform === 'node' || window.navigator.platform === 'iOS' || window.navigator.platform === 'Android') {
+            } else if (window.navigator.platform === 'node' || isMobile) {
                 // we may not have received a _socket.onclose from the node websocket module
                 logger.error('[CONN]: WebSocket connection error. Force _socket.onclose. ', error);
                 _socket.onclose();
@@ -14991,6 +14995,9 @@ var Circuit = (function (circuit) {
             });
         }
 
+        var _userAgent = navigator.userAgent.toLowerCase();
+        var _isMobile = (_userAgent.indexOf("mobile") > -1 && (_userAgent.indexOf("android") > -1 || _userAgent.indexOf("iphone") > -1));
+
         if (circuit.isElectron) {
             _api.getScreen = function (successCb, errorCb, screenShareOptions) {
                 var ipcRenderer = require('electron').ipcRenderer;
@@ -15169,7 +15176,7 @@ var Circuit = (function (circuit) {
                 _api.isFirefoxLegacy = function () { return true; };
             }
             _api.isScreensharingAvailable = function () { return true; };
-        } else if (window.navigator.platform === 'Android' || window.navigator.platform === 'iOS') {
+        } else if (_isMobile) {
             _api.getScreen = function (successCb) {
                 successCb && successCb();
             };
@@ -55694,10 +55701,12 @@ var Circuit = (function (circuit) {
         _config.emoticonMode = _config.emoticonMode || 'standard';
         setOauthConfig(config);
 
+        var _userAgent = navigator.userAgent.toLowerCase();
+
         var _isNode = (window.navigator.platform === 'node');
         var _isDotNet = (window.navigator.platform === 'dotnet');
         var _isWin32 = (window.navigator.platform === 'Win32'); // UWP JS apps, e.g. WinJS
-        var _isMobile = (window.navigator.platform === 'iOS' || window.navigator.platform === 'Android');
+        var _isMobile = (_userAgent.indexOf("mobile") > -1 && (_userAgent.indexOf("android") > -1 || _userAgent.indexOf("iphone") > -1));
 
         // OAuth2 access token
         var _accessToken;
