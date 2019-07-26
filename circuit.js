@@ -8952,7 +8952,7 @@ var Circuit = (function (circuit) {
             };
             
             // Set the new audio gain
-            audio[0].srcObject = modifyGain(stream, gain);
+            stream = modifyGain(stream, gain);
 
             return true;
         }
