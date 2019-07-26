@@ -8906,27 +8906,38 @@ var Circuit = (function (circuit) {
         return options;
     };
 
-    var toggleAudio = function (stream, enable) {
+    var setAudioVolume = function (stream, gain) {
         var audio = stream && stream.getAudioTracks();
-
-        var modifyGain = (stream, gainValue) => {
-            var ctx = new AudioContext();
-            var src = ctx.createMediaStreamSource(stream);
-            var dst = ctx.createMediaStreamDestination();
-            var gainNode = ctx.createGain();
-            gainNode.gain.value = gainValue;
-            [src, gainNode, dst].reduce((a, b) => a && a.connect(b));
-            return dst.stream;
-        };
         
         if (audio && audio[0]) {
             
-            console.log('[Circuit SDK] toggleAudio');
-            console.log(audio);
+            console.log('[Circuit SDK] setAudioVolume(' + gain + ')');
+
+            var modifyGain = (stream, gainValue) => {
+                var ctx = new AudioContext();
+                var src = ctx.createMediaStreamSource(stream);
+                var dst = ctx.createMediaStreamDestination();
+                var gainNode = ctx.createGain();
+                gainNode.gain.value = gainValue;
+                [src, gainNode, dst].reduce((a, b) => a && a.connect(b));
+                return dst.stream;
+            };
             
-            audio[0].srcObject = modifyGain(stream, 2.5);
+            // Set the new audio gain
+            audio[0].srcObject = modifyGain(stream, gain);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    var toggleAudio = function (stream, enable) {
+        var audio = stream && stream.getAudioTracks();
+        
+        if (audio && audio[0]) {
             
-            console.log(audio);
+            setAudioVolume(stream, 50);
 
             audio[0].enabled = !!enable;
             return true;
@@ -9466,6 +9477,7 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: true,
                     getMediaSourcesSupported: true,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
+                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () {
                         var map = {};
@@ -9911,6 +9923,7 @@ var Circuit = (function (circuit) {
                     getMediaSourcesSupported: true,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
                     iceTimeoutSafetyFactor: 0.5, // Wait 50% more when there are multiple peer connections
+                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10085,6 +10098,7 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: false,
                     getMediaSourcesSupported: false,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
+                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10221,6 +10235,7 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: false,
                     getMediaSourcesSupported: false,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
+                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10383,6 +10398,7 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: false,
                     getMediaSourcesSupported: false,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
+                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10522,6 +10538,7 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: false,
                     getMediaSourcesSupported: true,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
+                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10627,6 +10644,7 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: true,
                     getMediaSourcesSupported: false,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
+                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10677,6 +10695,7 @@ var Circuit = (function (circuit) {
             attachSinkIdToAudioElement: function (audioElement, sinkId, cb) {
                 cb && cb();
             },
+            setAudioVolume: function () { return false; },
             toggleAudio: function () { return false; },
             getNetmaskMap: function () { return {}; },
             init: initWebRTCAdapter
