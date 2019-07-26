@@ -8908,7 +8908,26 @@ var Circuit = (function (circuit) {
 
     var toggleAudio = function (stream, enable) {
         var audio = stream && stream.getAudioTracks();
+
+        var modifyGain = (stream, gainValue) => {
+            var ctx = new AudioContext();
+            var src = ctx.createMediaStreamSource(stream);
+            var dst = ctx.createMediaStreamDestination();
+            var gainNode = ctx.createGain();
+            gainNode.gain.value = gainValue;
+            [src, gainNode, dst].reduce((a, b) => a && a.connect(b));
+            return dst.stream;
+        };
+        
         if (audio && audio[0]) {
+            
+            console.log('[Circuit SDK] toggleAudio');
+            console.log(audio);
+            
+            audio[0].srcObject = modifyGain(stream, 2.5);
+            
+            console.log(audio);
+
             audio[0].enabled = !!enable;
             return true;
         }
