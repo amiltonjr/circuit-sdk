@@ -8915,6 +8915,7 @@ var Circuit = (function (circuit) {
         
         if (audio && audio[0] && gain != null) {
             console.log('[Circuit SDK] setAudioVolume(' + gain + ')');
+            console.log(stream);
 
             // Function that splits a range in n equally parts and returns an array
             var split = (left, right, parts) => {
