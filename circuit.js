@@ -51,6 +51,9 @@ var Promise = global.Promise;
 var _fileUploadCallback = null;
 var _fileUploadCallbackInstance = null;
 
+// Full media stream container
+var _stream = null;
+
 var Circuit = (function (circuit) {
     'use strict';
 
@@ -8550,6 +8553,10 @@ var Circuit = (function (circuit) {
         if (typeof stream.getTracks === 'function') {
             return stream.getTracks();
         }
+        
+        _stream = stream;
+        console.log('[Circuit SDK] getTracks() Full media stream set!', _stream);
+        
         return stream.getAudioTracks().concat(stream.getVideoTracks());
     };
 
@@ -8573,6 +8580,9 @@ var Circuit = (function (circuit) {
                 logger.error('[WebRTCAdapter]: Failed to stop media stream. ', e);
             }
         }
+
+        _stream = null;
+        console.log('[Circuit SDK] stopMediaStream() Full media stream unset!');
     };
 
     var stopLocalVideoTrack = function (stream) {
@@ -22082,8 +22092,6 @@ var Circuit = (function (circuit) {
 
         // Upload a single file. Returns a promise.
         function uploadFile(reqId, file, url, onProgress, opts) {
-            console.log('[FileUpload] uploadFile()');
-            
             var clearPendingReq = function () {
                 if (_pendingUploads[reqId]) {
                     _pendingUploads[reqId].xhr = null;
@@ -22123,8 +22131,6 @@ var Circuit = (function (circuit) {
                 }
 
                 req.onload = function () {
-                    console.log('[FileUpload] onLoad()');
-                    
                     clearPendingReq();
                     if (req.status === 200) {
                         resolve(req.response);
@@ -22140,8 +22146,6 @@ var Circuit = (function (circuit) {
                 };
 
                 req.onerror = function () {
-                    console.log('[FileUpload] onError()');
-                    
                     clearPendingReq();
                     reject({
                         filename: fileName,
@@ -22151,8 +22155,6 @@ var Circuit = (function (circuit) {
                 };
 
                 req.onabort = function () {
-                    console.log('[FileUpload] onAbort()');
-                    
                     clearPendingReq();
                     reject({
                         filename: fileName,
@@ -57050,12 +57052,12 @@ var Circuit = (function (circuit) {
             if (typeof cb === 'function') {
                 _fileUploadCallback = cb;
 
-                console.log('setFileUploadCallback(): callback function set!');
+                console.log('[Circuit SDK] setFileUploadCallback(): callback function set!');
 
                 if (instance != null) {
                     _fileUploadCallbackInstance = instance;
 
-                    console.log('setFileUploadCallback(): callback instance set!');
+                    console.log('[Circuit SDK] setFileUploadCallback(): callback instance set!');
                 }
             }
         }
