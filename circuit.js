@@ -58765,6 +58765,19 @@ var Circuit = (function (circuit) {
             });
         }
 
+        function renegotiateMedia(callId) {
+            return new Promise(function (resolve, reject) {
+                if (!callId) {
+                    reject(new Circuit.Error(Constants.ReturnCode.MISSING_REQUIRED_PARAMETER, 'callId is required'));
+                    return;
+                }
+                
+                _services.CallControlSvc.renegotiateMedia(callId);
+                
+                resolve(callId);
+            });
+        }
+
         function toggleRemoteVideo(callId) {
             // Toggles both remote video and remote screenshare
             return new Promise(function (resolve, reject) {
@@ -61693,6 +61706,11 @@ var Circuit = (function (circuit) {
          *    });
          */
         _self.toggleRemoteAudio = toggleRemoteAudio;
+
+        /*
+         * Force a media renegotiation from local to remote
+        */
+        _self.renegotiateMedia = renegotiateMedia;
 
         /**
          * Toggle receiving remote video and screen share on an existing
