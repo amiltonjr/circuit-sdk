@@ -58546,6 +58546,8 @@ var Circuit = (function (circuit) {
         }
 
         function setMediaDevices(devices) {
+            console.log('[Circuit SDK] setMediaDevices()', devices);
+            
             return new Promise(function (resolve, reject) {
                 if (!devices) {
                     reject(new Circuit.Error(Constants.ReturnCode.MISSING_REQUIRED_PARAMETER, 'devices is required'));
@@ -58772,10 +58774,14 @@ var Circuit = (function (circuit) {
                     return;
                 }
                 
-                _services.CallControlSvc.removeAudio(callId);
-                _services.CallControlSvc.addAudio(callId);
-                
-                resolve(callId);
+                _services.CallControlSvc.removeAudio(callId, function (err) {
+                    if (svcError(err, reject)) { return; }
+                    
+                    _services.CallControlSvc.addAudio(callId, function (err) {
+                        if (svcError(err, reject)) { return; }
+                        resolve();
+                    });
+                });
             });
         }
 
