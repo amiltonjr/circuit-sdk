@@ -60781,6 +60781,11 @@ var Circuit = (function (circuit) {
         _self.getItemsByThread = getItemsByThread;
 
         /*
+        * Sets the microphone volume for a call in progress
+        */
+        _self.setMicVolume = setMicVolume;
+        
+        /*
         * Sets the callback function to be called when a file upload is in progress
         */
        _self.setFileUploadCallback = setFileUploadCallback;
