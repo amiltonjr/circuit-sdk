@@ -51,9 +51,6 @@ var Promise = global.Promise;
 var _fileUploadCallback = null;
 var _fileUploadCallbackInstance = null;
 
-// Full media stream container
-var _stream = null;
-
 var Circuit = (function (circuit) {
     'use strict';
 
@@ -8558,9 +8555,6 @@ var Circuit = (function (circuit) {
             return stream.getTracks();
         }
         
-        _stream = stream;
-        console.log('[Circuit SDK] getTracks() Full media stream set!', _stream);
-        
         return stream.getAudioTracks().concat(stream.getVideoTracks());
     };
 
@@ -8584,9 +8578,6 @@ var Circuit = (function (circuit) {
                 logger.error('[WebRTCAdapter]: Failed to stop media stream. ', e);
             }
         }
-
-        _stream = null;
-        console.log('[Circuit SDK] stopMediaStream() Full media stream unset!');
     };
 
     var stopLocalVideoTrack = function (stream) {
@@ -8814,6 +8805,8 @@ var Circuit = (function (circuit) {
     };
 
     var getDefaultAudioOptions = function (config) {
+        console.log('[Circuit SDK] getDefaultAudioOptions()');
+        
         config = config || {};
         return {
             optional: [
