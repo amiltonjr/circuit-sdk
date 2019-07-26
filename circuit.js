@@ -8915,7 +8915,6 @@ var Circuit = (function (circuit) {
         
         if (audio && audio[0] && gain != null) {
             console.log('[Circuit SDK] setAudioVolume(' + gain + ')');
-            console.log(stream);
 
             // Function that splits a range in n equally parts and returns an array
             var split = (left, right, parts) => {
@@ -8938,8 +8937,9 @@ var Circuit = (function (circuit) {
                 gainLevel = Math.round(gainLevel);
                 if (gainLevel < 1) { gainLevel = 1; } else if (gainLevel > 10) { gainLevel = 10; }
                 
+                var audioTrack = stream.getAudioTracks()[0];
                 var ctx = new AudioContext();
-                var src = ctx.createMediaStreamSource(stream);
+                var src = ctx.createMediaStreamSource(new MediaStream([audioTrack]));
                 var dst = ctx.createMediaStreamDestination();
                 var gainNode = ctx.createGain();
                 
@@ -8948,12 +8948,13 @@ var Circuit = (function (circuit) {
                 // Set the gain value as a level of the limit
                 gainNode.gain.value = levels[gainLevel - 1];
 
+                // Set the new audio gain
                 [src, gainNode, dst].reduce((a, b) => a && a.connect(b));
-                return dst.stream;
+                stream.removeTrack(audioTrack);
+                stream.addTrack(dst.stream.getAudioTracks()[0]);
             };
-            
-            // Set the new audio gain
-            stream = modifyGain(stream, gain);
+
+            modifyGain(stream, _volumeGain);
 
             return true;
         }
