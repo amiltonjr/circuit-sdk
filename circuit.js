@@ -8916,12 +8916,37 @@ var Circuit = (function (circuit) {
         if (audio && audio[0] && gain != null) {
             console.log('[Circuit SDK] setAudioVolume(' + gain + ')');
 
-            var modifyGain = (stream, gainValue) => {
+            // Function that splits a range in n equally parts and returns an array
+            var split = (left, right, parts) => {
+                var result = [];
+                var delta = (right - left) / (parts - 1);
+
+                while (left < right) {
+                    result.push(left);
+                    left += delta;
+                }
+
+                result.push(right);
+
+                return result;
+            };
+            
+            // Gain can go from 1 to 10, where 1 is normal volume and up to 10 the loudest one
+            var modifyGain = (stream, gainLevel) => {
+                // Make sure the gain level is in correct range
+                gainLevel = Math.round(gainLevel);
+                if (gainLevel < 1) { gainLevel = 1; } else if (gainLevel > 10) { gainLevel = 10; }
+                
                 var ctx = new AudioContext();
                 var src = ctx.createMediaStreamSource(stream);
                 var dst = ctx.createMediaStreamDestination();
                 var gainNode = ctx.createGain();
-                gainNode.gain.value = gainValue;
+                
+                // Split in 10 different levels
+                var levels = split(1, 100, 10);
+                // Set the gain value as a level of the limit
+                gainNode.gain.value = levels[gainLevel - 1];
+
                 [src, gainNode, dst].reduce((a, b) => a && a.connect(b));
                 return dst.stream;
             };
