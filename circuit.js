@@ -51,6 +51,9 @@ var Promise = global.Promise;
 var _fileUploadCallback = null;
 var _fileUploadCallbackInstance = null;
 
+// Microphone volume gain
+var _volumeGain = null;
+
 var Circuit = (function (circuit) {
     'use strict';
 
@@ -8906,11 +8909,11 @@ var Circuit = (function (circuit) {
         return options;
     };
 
-    var setAudioVolume = function (stream, gain) {
+    var setAudioVolume = function (stream) {
         var audio = stream && stream.getAudioTracks();
+        var gain = _volumeGain;
         
-        if (audio && audio[0]) {
-            
+        if (audio && audio[0] && gain != null) {
             console.log('[Circuit SDK] setAudioVolume(' + gain + ')');
 
             var modifyGain = (stream, gainValue) => {
@@ -8936,10 +8939,12 @@ var Circuit = (function (circuit) {
         var audio = stream && stream.getAudioTracks();
         
         if (audio && audio[0]) {
-            
-            setAudioVolume(stream, 50);
+            // Set the volume gain (if applicable)
+            setAudioVolume(stream);
 
+            // Toggle audio feed
             audio[0].enabled = !!enable;
+            
             return true;
         }
         return false;
@@ -13445,7 +13450,7 @@ var Circuit = (function (circuit) {
     BaseCall.prototype.hasRemoteScreenShare = function () {
         return this.mediaType.desktop && !this.localMediaType.desktop;
     };
-
+    
     BaseCall.prototype.isMuted = function () { return false; };
 
     BaseCall.prototype.mute = function () {
@@ -14828,7 +14833,7 @@ var Circuit = (function (circuit) {
         logger.debug('[LocalCall]: Unmute call with callId =', this.callId);
         return this.sessionCtrl && this.sessionCtrl.unmute(cb);
     };
-
+    
     LocalCall.prototype.isLocalMuteAllowed = function () {
         return this.sessionCtrl && this.sessionCtrl.isLocalMuteAllowed();
     };
@@ -57086,6 +57091,22 @@ var Circuit = (function (circuit) {
                 }).then(getDirectConversationByUserId);
             }
             return getDirectConversationByUserId({userId: query, createIfNotExists: createIfNotExists});
+        }
+
+        function setMicVolume(gain) {
+            var isNumber = function (n) {
+                return !isNaN(parseFloat(n)) && !isNaN(n - 0);
+            };
+
+            if (isNumber(gain)) {
+                console.log('[Circuit SDK] Microphone gain can now be set to ' + gain);
+                
+                _volumeGain = gain;
+            } else {
+                console.error('[Circuit SDK] Cannot set microphone gain: invalid parameter!');
+                
+                _volumeGain = null;
+            }
         }
 
         function setFileUploadCallback(cb, instance) {
