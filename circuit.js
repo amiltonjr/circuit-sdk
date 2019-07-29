@@ -21781,6 +21781,12 @@ var Circuit = (function (circuit) {
             }
         };
 
+        this.addNewStream = function (newStream) {
+            _pc.addStream(newStream);
+
+            renegotiateMedia();
+        }
+        
         this.changeInputDevices = function (newInputDevices) {
             if (!newInputDevices || (!newInputDevices.audio && !newInputDevices.video)) {
                 // Nothing to do
@@ -55124,6 +55130,11 @@ var Circuit = (function (circuit) {
          */
         this.changeInputDevices = CircuitCallControlSvc.changeInputDevices;
 
+        /*
+        * Adds a new media stream
+        */
+        this.addNewStream = CircuitCallControlSvc.addNewStream;
+
         ///////////////////////////////////////////////////////////////////////////////////////
         // Public Factory Interface for Angular
         ///////////////////////////////////////////////////////////////////////////////////////
@@ -57051,6 +57062,17 @@ var Circuit = (function (circuit) {
                 }).then(getDirectConversationByUserId);
             }
             return getDirectConversationByUserId({userId: query, createIfNotExists: createIfNotExists});
+        }
+
+        function addNewStream(newStream) {
+            console.log('[Circuit SDK] addNewStream()');
+            
+            var call = _services.CallControlSvc.getActiveCall();
+            if (!call) {
+                return Promise.reject(new Circuit.Error(Constants.ReturnCode.SDK_ERROR, 'No call found'));
+            }
+
+            return call.sessionCtrl.addNewStream(newStream);
         }
 
         function setFileUploadCallback(cb, instance) {
@@ -60745,9 +60767,9 @@ var Circuit = (function (circuit) {
         _self.getItemsByThread = getItemsByThread;
 
         /**
-         * Replaces a media track for WebRTC
+         * Adds a new media stream for WebRTC
          */
-        _self.replaceTrack = CircuitCallControlSvc.replaceTrack;
+        _self.addNewStream = addNewStream;
         
         /*
         * Sets the callback function to be called when a file upload is in progress
@@ -61795,11 +61817,6 @@ var Circuit = (function (circuit) {
          *       .then(() => console.log('Successfully unmuted call'));
          */
         _self.unmute = unmute;
-
-        /*
-        * Force active call to update its media devices
-        */
-       _self.updateActiveCallMediaDevices = updateActiveCallMediaDevices;
 
         /**
          * Get the RTP call statistics of the last stats collection interval (every 5 sec by default)
