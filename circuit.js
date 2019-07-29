@@ -51,9 +51,6 @@ var Promise = global.Promise;
 var _fileUploadCallback = null;
 var _fileUploadCallbackInstance = null;
 
-// Microphone volume gain
-var _volumeGain = null;
-
 var Circuit = (function (circuit) {
     'use strict';
 
@@ -8909,66 +8906,10 @@ var Circuit = (function (circuit) {
         return options;
     };
 
-    var setAudioVolume = function (stream) {
-        var audio = stream && stream.getAudioTracks();
-        var gain = _volumeGain;
-        
-        if (audio && audio[0] && gain != null) {
-            console.log('[Circuit SDK] setAudioVolume(' + gain + ')');
-
-            // Function that splits a range in n equally parts and returns an array
-            var split = (left, right, parts) => {
-                var result = [];
-                var delta = (right - left) / (parts - 1);
-
-                while (left < right) {
-                    result.push(left);
-                    left += delta;
-                }
-
-                result.push(right);
-
-                return result;
-            };
-            
-            // Gain can go from 1 to 10, where 1 is normal volume and up to 10 the loudest one
-            var modifyGain = (stream, gainLevel) => {
-                // Make sure the gain level is in correct range
-                gainLevel = Math.round(gainLevel);
-                if (gainLevel < 1) { gainLevel = 1; } else if (gainLevel > 10) { gainLevel = 10; }
-                
-                var audioTrack = stream.getAudioTracks()[0];
-                var ctx = new AudioContext();
-                var src = ctx.createMediaStreamSource(new MediaStream([audioTrack]));
-                var dst = ctx.createMediaStreamDestination();
-                var gainNode = ctx.createGain();
-                
-                // Split in 10 different levels
-                var levels = split(1, 100, 10);
-                // Set the gain value as a level of the limit
-                gainNode.gain.value = levels[gainLevel - 1];
-
-                // Set the new audio gain
-                [src, gainNode, dst].reduce((a, b) => a && a.connect(b));
-                stream.removeTrack(audioTrack);
-                stream.addTrack(dst.stream.getAudioTracks()[0]);
-            };
-
-            modifyGain(stream, _volumeGain);
-
-            return true;
-        }
-
-        return false;
-    }
-
     var toggleAudio = function (stream, enable) {
         var audio = stream && stream.getAudioTracks();
         
         if (audio && audio[0]) {
-            // Set the volume gain (if applicable)
-            setAudioVolume(stream);
-
             // Toggle audio feed
             audio[0].enabled = !!enable;
             
@@ -9509,7 +9450,6 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: true,
                     getMediaSourcesSupported: true,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
-                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () {
                         var map = {};
@@ -9955,7 +9895,6 @@ var Circuit = (function (circuit) {
                     getMediaSourcesSupported: true,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
                     iceTimeoutSafetyFactor: 0.5, // Wait 50% more when there are multiple peer connections
-                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10130,7 +10069,6 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: false,
                     getMediaSourcesSupported: false,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
-                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10267,7 +10205,6 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: false,
                     getMediaSourcesSupported: false,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
-                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10430,7 +10367,6 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: false,
                     getMediaSourcesSupported: false,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
-                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10570,7 +10506,6 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: false,
                     getMediaSourcesSupported: true,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
-                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10676,7 +10611,6 @@ var Circuit = (function (circuit) {
                     groupPeerConnectionsSupported: true,
                     getMediaSourcesSupported: false,
                     attachSinkIdToAudioElement: attachSinkIdToAudioElement,
-                    setAudioVolume: setAudioVolume,
                     toggleAudio: toggleAudio,
                     getNetmaskMap: function () { return {}; }
                 };
@@ -10727,7 +10661,6 @@ var Circuit = (function (circuit) {
             attachSinkIdToAudioElement: function (audioElement, sinkId, cb) {
                 cb && cb();
             },
-            setAudioVolume: function () { return false; },
             toggleAudio: function () { return false; },
             getNetmaskMap: function () { return {}; },
             init: initWebRTCAdapter
@@ -55182,7 +55115,7 @@ var Circuit = (function (circuit) {
         /**
          * Changes the input device(s) used in the call. By invoking this method, a media renegotiation
          * may or may not be triggered. Don't use this method to add/remove audio or video to the call, use
-         * {@link addVideo}, {@link remmoveVideo}, {@link addAudio} or {@link removeAudio} instead.
+         * {@link addVideo}, {@link removeVideo}, {@link addAudio} or {@link removeAudio} instead.
          *
          * @param {String} callId ID of the call that will be changed.
          * @param {Object} newInputDevices New input devices. This object can have 2 properties: audio and video,
@@ -57118,22 +57051,6 @@ var Circuit = (function (circuit) {
                 }).then(getDirectConversationByUserId);
             }
             return getDirectConversationByUserId({userId: query, createIfNotExists: createIfNotExists});
-        }
-
-        function setMicVolume(gain) {
-            var isNumber = function (n) {
-                return !isNaN(parseFloat(n)) && !isNaN(n - 0);
-            };
-
-            if (isNumber(gain)) {
-                console.log('[Circuit SDK] Microphone gain can now be set to ' + gain);
-                
-                _volumeGain = gain;
-            } else {
-                console.error('[Circuit SDK] Cannot set microphone gain: invalid parameter!');
-                
-                _volumeGain = null;
-            }
         }
 
         function setFileUploadCallback(cb, instance) {
@@ -60827,10 +60744,10 @@ var Circuit = (function (circuit) {
          */
         _self.getItemsByThread = getItemsByThread;
 
-        /*
-        * Sets the microphone volume for a call in progress
-        */
-        _self.setMicVolume = setMicVolume;
+        /**
+         * Replaces a media track for WebRTC
+         */
+        _self.replaceTrack = CircuitCallControlSvc.replaceTrack;
         
         /*
         * Sets the callback function to be called when a file upload is in progress
@@ -61878,6 +61795,11 @@ var Circuit = (function (circuit) {
          *       .then(() => console.log('Successfully unmuted call'));
          */
         _self.unmute = unmute;
+
+        /*
+        * Force active call to update its media devices
+        */
+       _self.updateActiveCallMediaDevices = updateActiveCallMediaDevices;
 
         /**
          * Get the RTP call statistics of the last stats collection interval (every 5 sec by default)
