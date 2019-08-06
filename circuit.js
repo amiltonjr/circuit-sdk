@@ -53796,7 +53796,10 @@ var Circuit = (function (circuit) {
                 } else if (call.isOsBizSecondCall) {
                     CstaSvc.reconnect(call, CircuitCallControlSvc.findOsBizFirstCall(), cb);
                 } else if (call.isRemote) {
-                    CircuitCallControlSvc.endRemoteCall(callId, cb);
+                    CircuitCallControlSvc.endRemoteCall(callId, function() {
+                        // Workaround: in case of error, leaves the conversation
+                        CircuitCallControlSvc.endCall(callId, cb);
+                    });
                 } else {
                     if (cause) {
                         CircuitCallControlSvc.endCallWithCauseCode(callId, cause, cb);
