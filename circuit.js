@@ -8554,7 +8554,6 @@ var Circuit = (function (circuit) {
         if (typeof stream.getTracks === 'function') {
             return stream.getTracks();
         }
-        
         return stream.getAudioTracks().concat(stream.getVideoTracks());
     };
 
@@ -8805,8 +8804,6 @@ var Circuit = (function (circuit) {
     };
 
     var getDefaultAudioOptions = function (config) {
-        console.log('[Circuit SDK] getDefaultAudioOptions()');
-        
         config = config || {};
         return {
             optional: [
@@ -8908,11 +8905,8 @@ var Circuit = (function (circuit) {
 
     var toggleAudio = function (stream, enable) {
         var audio = stream && stream.getAudioTracks();
-        
         if (audio && audio[0]) {
-            // Toggle audio feed
             audio[0].enabled = !!enable;
-            
             return true;
         }
         return false;
@@ -13410,7 +13404,7 @@ var Circuit = (function (circuit) {
     BaseCall.prototype.hasRemoteScreenShare = function () {
         return this.mediaType.desktop && !this.localMediaType.desktop;
     };
-    
+
     BaseCall.prototype.isMuted = function () { return false; };
 
     BaseCall.prototype.mute = function () {
@@ -14793,7 +14787,7 @@ var Circuit = (function (circuit) {
         logger.debug('[LocalCall]: Unmute call with callId =', this.callId);
         return this.sessionCtrl && this.sessionCtrl.unmute(cb);
     };
-    
+
     LocalCall.prototype.isLocalMuteAllowed = function () {
         return this.sessionCtrl && this.sessionCtrl.isLocalMuteAllowed();
     };
@@ -21786,7 +21780,7 @@ var Circuit = (function (circuit) {
 
             renegotiateMedia();
         }
-        
+
         this.changeInputDevices = function (newInputDevices) {
             if (!newInputDevices || (!newInputDevices.audio && !newInputDevices.video)) {
                 // Nothing to do
@@ -57069,7 +57063,7 @@ var Circuit = (function (circuit) {
 
         function addNewStream(newStream) {
             console.log('[Circuit SDK] addNewStream()');
-            
+
             var call = _services.CallControlSvc.getActiveCall();
             if (!call) {
                 return Promise.reject(new Circuit.Error(Constants.ReturnCode.SDK_ERROR, 'No call found'));
@@ -58489,7 +58483,7 @@ var Circuit = (function (circuit) {
 
         function setMediaDevices(devices) {
             console.log('[Circuit SDK] setMediaDevices()', devices);
-            
+
             return new Promise(function (resolve, reject) {
                 if (!devices) {
                     reject(new Circuit.Error(Constants.ReturnCode.MISSING_REQUIRED_PARAMETER, 'devices is required'));
@@ -58715,10 +58709,10 @@ var Circuit = (function (circuit) {
                     reject(new Circuit.Error(Constants.ReturnCode.MISSING_REQUIRED_PARAMETER, 'callId is required'));
                     return;
                 }
-                
+
                 _services.CallControlSvc.removeAudio(callId, function (err) {
                     if (svcError(err, reject)) { return; }
-                    
+
                     _services.CallControlSvc.addAudio(callId, function (err) {
                         if (svcError(err, reject)) { return; }
                         resolve();
@@ -60773,7 +60767,7 @@ var Circuit = (function (circuit) {
          * Adds a new media stream for WebRTC
          */
         _self.addNewStream = addNewStream;
-        
+
         /*
         * Sets the callback function to be called when a file upload is in progress
         */
