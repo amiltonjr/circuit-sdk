@@ -28,30 +28,30 @@ describe('Conversation Items', () => {
             helper.expectEvents(client, [{
                 type: 'itemAdded',
                 predicate: evt => evt.item.convId === conversation.convId
-            }])
+            }])           
         ]);
         item = res[0];
         assert(item.convId === conversation.convId && item.text.content === textValue);
     });
-
-    /*it('function: updateTextItem, with event: itemUpdated', async () => {
+    
+    it('function: updateTextItem, with event: itemUpdated', async () => {
         const textValue = `${Date.now()}b`;
         const subject = `${Date.now()}c`;
         const content = {
             itemId: item.itemId,
             subject: subject,
-            content: textValue,
+            content: textValue,     
         }
         const res  = await Promise.all([
             client.updateTextItem(content),
             helper.expectEvents(client, [{
                 type: 'itemUpdated',
                 predicate: evt => evt.item.convId === conversation.convId && evt.item.itemId === item.itemId
-            }])
+            }])           
         ]);
         item = res[0];
         assert(item.itemId === content.itemId && item.text.content === textValue && item.text.subject === subject);
-    });*/
+    });
 
     it('function: getConversationFeed', async () => {
         const res  = await client.getConversationFeed(conversation.convId);
@@ -59,13 +59,13 @@ describe('Conversation Items', () => {
     });
 
     it('function: getConversationItems,  with {direction: AFTER}', async () => {
-        const options = {
+        const options = {   
             creationDate: item.creationTime - 1,
             direction: 'AFTER'
         }
         const res  = await client.getConversationItems(conversation.convId, options);
         assert(res.some(conversationItem => conversationItem.itemId === item.itemId));
-    });
+    }); 
 
     it('functions: [flagItem, getFlaggedItems], with event: itemFlagged', async () => {
         if (!Circuit.supportedEvents.includes('itemFlagged')) {
@@ -78,12 +78,12 @@ describe('Conversation Items', () => {
             helper.expectEvents(client, [{
                 type: 'itemFlagged',
                 predicate: evt => evt.convId === conversation.convId && evt.itemId === item.itemId
-            }])
+            }])         
         ]);
         const res = await client.getFlaggedItems();
         assert(res && res.some(conv => conv.conversationId === conversation.convId && conv.conversationItemData.some(i => i.itemId === item.itemId)));
     });
-
+    
     it('functions: [unflagItem, getFlaggedItems], with event: itemUnflagged', async () => {
         if (!Circuit.supportedEvents.includes('itemUnflagged')) {
             console.log('Event not supported.');
@@ -95,9 +95,9 @@ describe('Conversation Items', () => {
             helper.expectEvents(client, [{
                 type: 'itemUnflagged',
                 predicate: evt => evt.convId === conversation.convId && evt.itemId === item.itemId
-            }])
+            }])         
         ]);
-        const res = await client.getFlaggedItems();
+        const res = await client.getFlaggedItems();      
         assert(res && !res.some(conv => conv.conversationId === conversation.convId && conv.conversationItemData.some(i => i.itemId === item.itemId)));
     });
 
@@ -107,7 +107,7 @@ describe('Conversation Items', () => {
             helper.expectEvents(client, [{
                 type: 'itemUpdated',
                 predicate: evt => evt.item.itemId === item.itemId && evt.item.convId === conversation.convId
-            }])
+            }]) 
         ]);
         const res = await client.getItemById(item.itemId);
         assert(res.text.likedByUsers.includes(user.userId));
@@ -119,7 +119,7 @@ describe('Conversation Items', () => {
             helper.expectEvents(client, [{
                 type: 'itemUpdated',
                 predicate: evt => evt.item.itemId === item.itemId && evt.item.convId === conversation.convId
-            }])
+            }]) 
         ]);
         const res = await client.getItemById(item.itemId);
         assert(!res.text.likedByUsers || !res.text.likedByUsers.includes(user.userId));
@@ -131,12 +131,12 @@ describe('Conversation Items', () => {
             helper.expectEvents(client, [{
                 type: 'conversationReadItems',
                 predicate: evt => evt.data.convId === conversation.convId
-            }])
+            }]) 
         ]);
         assert(res[1].data.convId === conversation.convId);
     });
 
-    /*it('functions: [updateUser, addTextItem], with event: mention', async () => {
+    it('functions: [updateUser, addTextItem], with event: mention', async () => {
         await client2.updateUser({
             userId: user2.userId,
             firstName: 'John',
@@ -152,8 +152,8 @@ describe('Conversation Items', () => {
             }),
             helper.expectEvents(client2, [{
                 type: 'mention',
-                predicate: evt => evt.mention.userReference.userId === user2.userId && evt.mention.itemReference.convId === conversation.convId
-            }])
+                predicate: evt => evt.mention.userReference.userId === user.userId && evt.mention.itemReference.convId === conversation.convId
+            }]) 
         ]);
         await client2.updateUser({
             userId: user2.userId,
@@ -162,6 +162,6 @@ describe('Conversation Items', () => {
         });
         const mentionedItem = res[0];
         const mention = res[1].mention;
-        assert(mentionedItem.convId === conversation.convId && mentionedItem.creatorId === user.userId && mentionedItem.itemId === mention.itemReference.itemId && mention.userReference.userId === user2.userId);
-    });*/
+        assert(mentionedItem.convId === conversation.convId && mentionedItem.creatorId === user.userId && mentionedItem.itemId === mention.itemReference.itemId && mention.userReference.userId === user.userId);
+    });
 });
