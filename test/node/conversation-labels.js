@@ -15,6 +15,11 @@ describe('Conversation Labels', () => {
         conversation = prep.conversation;
         client = prep.client;
         LABEL_SUPPORTED = client.addLabels && Circuit.supportedEvents.includes('labelsAdded') && client.editLabel && Circuit.supportedEvents.includes('labelEdited') && client.assignLabels && client.unassignLabels && client.removeLabels && Circuit.supportedEvents.includes('labelsRemoved');
+        // Remove all labels
+        const labels = await client.getAllLabels();
+        if (labels.length) {
+            await client.removeLabels(labels.map(l => l.labelId));
+        }
     });
 
     it('functions: [addLabels, getAllLabels], with event: labelsAdded', async () => {
@@ -121,8 +126,7 @@ describe('Conversation Labels', () => {
             retrieveAction: Circuit.Enums.RetrieveAction.CONVERSATIONS
         });
         assert(res.find(conv => conv.convId === conversation.convId));
-
-    });
+    }).timeout(7000);
 
     it('function: getConversationsByLabel', async () => {
         if (!LABEL_SUPPORTED) {
